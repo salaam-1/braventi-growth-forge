@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as StoryRouteImport } from './routes/story'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as LeadershipRouteImport } from './routes/leadership'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as AboutRouteImport } from './routes/about'
@@ -30,11 +29,6 @@ const StoryRoute = StoryRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LeadershipRoute = LeadershipRouteImport.update({
-  id: '/leadership',
-  path: '/leadership',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -88,7 +82,6 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
-  '/leadership': typeof LeadershipRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/story': typeof StoryRoute
   '/businesses/energies': typeof BusinessesEnergiesRoute
@@ -102,7 +95,6 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
-  '/leadership': typeof LeadershipRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/story': typeof StoryRoute
   '/businesses/energies': typeof BusinessesEnergiesRoute
@@ -117,7 +109,6 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
-  '/leadership': typeof LeadershipRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/story': typeof StoryRoute
   '/businesses/energies': typeof BusinessesEnergiesRoute
@@ -133,7 +124,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/careers'
     | '/contact'
-    | '/leadership'
     | '/sitemap.xml'
     | '/story'
     | '/businesses/energies'
@@ -147,7 +137,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/careers'
     | '/contact'
-    | '/leadership'
     | '/sitemap.xml'
     | '/story'
     | '/businesses/energies'
@@ -161,7 +150,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/careers'
     | '/contact'
-    | '/leadership'
     | '/sitemap.xml'
     | '/story'
     | '/businesses/energies'
@@ -176,7 +164,6 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
-  LeadershipRoute: typeof LeadershipRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StoryRoute: typeof StoryRoute
   BusinessesEnergiesRoute: typeof BusinessesEnergiesRoute
@@ -200,13 +187,6 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/leadership': {
-      id: '/leadership'
-      path: '/leadership'
-      fullPath: '/leadership'
-      preLoaderRoute: typeof LeadershipRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -280,7 +260,6 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
-  LeadershipRoute: LeadershipRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StoryRoute: StoryRoute,
   BusinessesEnergiesRoute: BusinessesEnergiesRoute,

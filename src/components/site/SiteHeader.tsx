@@ -1,16 +1,23 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import logoAsset from "@/assets/brave_logo.png.asset.json";
 
-const nav = [
+type NavItem = {
+  to: string;
+  label: string;
+  hash?: string;
+};
+
+const nav: NavItem[] = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/businesses", label: "Our Businesses" },
-  { to: "/leadership", label: "Leadership" },
+  { to: "/", hash: "leadership", label: "Leadership" },
   { to: "/story", label: "Our Story" },
   { to: "/careers", label: "Careers" },
   { to: "/contact", label: "Contact" },
-] as const;
+];
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -23,6 +30,40 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const renderNavLink = (n: NavItem, onClick?: () => void, className?: string) => {
+    if (n.hash) {
+      return (
+        <a
+          key={`${n.to}#${n.hash}`}
+          href={`${n.to === "/" ? "" : n.to}#${n.hash}`}
+          onClick={(e) => {
+            if (typeof window !== "undefined" && window.location.pathname === n.to) {
+              e.preventDefault();
+              const el = document.getElementById(n.hash!);
+              if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+            onClick?.();
+          }}
+          className={className}
+        >
+          {n.label}
+        </a>
+      );
+    }
+    return (
+      <Link
+        key={n.to}
+        to={n.to}
+        activeOptions={{ exact: n.to === "/" }}
+        onClick={onClick}
+        className={className}
+        activeProps={{ className: `${className ?? ""} text-primary` }}
+      >
+        {n.label}
+      </Link>
+    );
+  };
+
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
@@ -33,31 +74,23 @@ export function SiteHeader() {
     >
       <div className="container-x flex h-20 items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-sm bg-primary text-primary-foreground font-display text-lg leading-none">
-            
-          </span>
-          <span className="flex flex-col leading-none">
-            <span className="font-display text-lg tracking-tight text-charcoal">
-              Braventi
-            </span>
-            <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
-              Holdings
-            </span>
-          </span>
+          <img
+            src={logoAsset.url}
+            alt="Braventi Holdings"
+            className="h-12 w-auto md:h-14"
+            width={56}
+            height={56}
+          />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">
-          {nav.map((n) => (
-            <Link
-              key={n.to}
-              to={n.to}
-              activeOptions={{ exact: n.to === "/" }}
-              className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
-              activeProps={{ className: "text-primary" }}
-            >
-              {n.label}
-            </Link>
-          ))}
+          {nav.map((n) =>
+            renderNavLink(
+              n,
+              undefined,
+              "text-sm font-medium text-foreground/80 transition-colors hover:text-primary",
+            ),
+          )}
         </nav>
 
         <div className="hidden lg:flex items-center">
@@ -81,17 +114,13 @@ export function SiteHeader() {
       {open && (
         <div className="lg:hidden border-t border-border bg-background">
           <div className="container-x py-6 flex flex-col gap-1">
-            {nav.map((n) => (
-              <Link
-                key={n.to}
-                to={n.to}
-                onClick={() => setOpen(false)}
-                className="rounded-sm px-2 py-3 text-base font-medium text-foreground hover:bg-secondary"
-                activeProps={{ className: "text-primary" }}
-              >
-                {n.label}
-              </Link>
-            ))}
+            {nav.map((n) =>
+              renderNavLink(
+                n,
+                () => setOpen(false),
+                "rounded-sm px-2 py-3 text-base font-medium text-foreground hover:bg-secondary",
+              ),
+            )}
             <Link
               to="/contact"
               onClick={() => setOpen(false)}

@@ -17,6 +17,10 @@ import {
   Award,
   Leaf,
   Users,
+  Linkedin,
+  Twitter,
+  User,
+  Quote,
 } from "lucide-react";
 import { SectionHeader } from "@/components/site/PageHero";
 
@@ -81,6 +85,54 @@ const businesses = [
     icon: Sun,
     desc: "Sustainable energy solutions for cleaner communities and long-term energy resilience.",
     upcoming: true,
+  },
+];
+
+type Leader = {
+  name: string;
+  role: string;
+  org: string;
+  quote?: string;
+  linkedin?: string;
+  twitter?: string;
+};
+
+const leaders: Leader[] = [
+  {
+    name: "Sulaiman Abduljaleel Mahmud",
+    role: "Chairman & CEO",
+    org: "Braventi Holdings",
+    quote:
+      "I don't pick industries. I pick broken systems, then I build companies to fix them.",
+    linkedin: "#",
+    twitter: "#",
+  },
+  {
+    name: "Usman Yakubu",
+    role: "Head of Product & Technology",
+    org: "Braventi Holdings",
+    quote:
+      "I don't chase every idea. I chase the ones that survive contact with reality.",
+    linkedin: "#",
+    twitter: "#",
+  },
+  {
+    name: "Fahad Zakariyya Ishaq",
+    role: "Head of Operations",
+    org: "Braventi Holdings",
+    quote:
+      "History remembers those who transformed obstacles into opportunities for a nation, not just themselves.",
+    linkedin: "#",
+    twitter: "#",
+  },
+  {
+    name: "Usman Musa",
+    role: "Research and Development",
+    org: "Braventi Holdings",
+    quote:
+      "Every community deserves opportunities to grow. I am committed to connecting people with the resources, support, and partnerships that drive sustainable development.",
+    linkedin: "#",
+    twitter: "#",
   },
 ];
 
@@ -297,6 +349,85 @@ function Home() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* LEADERSHIP */}
+      <section id="leadership" className="py-24 md:py-32 scroll-mt-24">
+        <div className="container-x">
+          <SectionHeader
+            eyebrow="Leadership"
+            title="The people building Braventi Holdings."
+          />
+          <p className="mt-6 max-w-2xl text-base md:text-lg text-muted-foreground leading-relaxed">
+            Our leadership team brings entrepreneurial experience, deep operating
+            discipline and a shared commitment to building enduring businesses.
+          </p>
+
+          <div className="mt-16 grid gap-8 md:grid-cols-2">
+            {leaders.map((p, i) => (
+              <div
+                key={p.name}
+                className="group rounded-sm border border-border bg-white overflow-hidden hover:border-primary/40 hover:shadow-[0_25px_60px_-40px_rgba(1,77,64,0.35)] transition"
+              >
+                <div className="grid grid-cols-5">
+                  <div className="col-span-2 relative aspect-square bg-bone flex items-center justify-center overflow-hidden">
+                    <User size={64} strokeWidth={1} className="text-primary/30" />
+                    <div className="absolute bottom-3 left-3 text-[10px] uppercase tracking-widest text-muted-foreground">
+                      Photo pending
+                    </div>
+                  </div>
+                  <div className="col-span-3 p-8 flex flex-col">
+                    {i === 0 && (
+                      <span className="mb-4 inline-flex self-start rounded-full bg-gold/10 border border-gold/40 px-3 py-1 text-[10px] uppercase tracking-widest text-gold">
+                        Chairman
+                      </span>
+                    )}
+                    <h3 className="text-xl md:text-2xl font-display leading-snug">
+                      {p.name}
+                    </h3>
+                    <p className="mt-2 text-sm text-primary font-medium">
+                      {p.role}
+                    </p>
+                    <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
+                      {p.org}
+                    </p>
+                    {p.quote && (
+                      <blockquote className="mt-5 relative border-l-2 border-gold/60 pl-4">
+                        <Quote
+                          size={14}
+                          className="absolute -left-[7px] -top-1 bg-white text-gold"
+                        />
+                        <p className="italic text-sm text-foreground/80 leading-relaxed">
+                          {p.quote}
+                        </p>
+                      </blockquote>
+                    )}
+                    <div className="mt-auto pt-6 flex items-center gap-2">
+                      {p.linkedin && (
+                        <a
+                          href={p.linkedin}
+                          aria-label={`${p.name} on LinkedIn`}
+                          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground hover:border-primary hover:text-primary transition"
+                        >
+                          <Linkedin size={14} />
+                        </a>
+                      )}
+                      {p.twitter && (
+                        <a
+                          href={p.twitter}
+                          aria-label={`${p.name} on Twitter`}
+                          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground hover:border-primary hover:text-primary transition"
+                        >
+                          <Twitter size={14} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

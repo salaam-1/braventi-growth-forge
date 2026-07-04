@@ -33,17 +33,17 @@ export function SiteFooter() {
               {[
                 ["/about", "About"],
                 ["/businesses", "Our Businesses"],
-                ["/leadership", "Leadership"],
+                ["/#leadership", "Leadership"],
                 ["/careers", "Careers"],
                 ["/contact", "Contact"],
               ].map(([to, label]) => (
                 <li key={to}>
-                  <Link
-                    to={to}
+                  <a
+                    href={to}
                     className="text-white/75 hover:text-gold transition-colors"
                   >
                     {label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
