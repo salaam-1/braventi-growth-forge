@@ -34,7 +34,7 @@ export function SiteHeader() {
       <div className="container-x flex h-20 items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
           <span className="inline-flex h-9 w-9 items-center justify-center rounded-sm bg-primary text-primary-foreground font-display text-lg leading-none">
-            B
+            
           </span>
           <span className="flex flex-col leading-none">
             <span className="font-display text-lg tracking-tight text-charcoal">
