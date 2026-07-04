@@ -82,8 +82,8 @@ export function SiteFooter() {
               <li>Abuja, Nigeria</li>
               <li className="flex items-center gap-2">
                 <Mail size={14} className="text-gold" />
-                <a href="mailto:hello@braventi.com" className="hover:text-gold">
-                  hello@braventi.com
+                <a href="mailto:braventitechnologies@gmail.com" className="hover:text-gold">
+                  braventitechnologies@gmail.com
                 </a>
               </li>
             </ul>
