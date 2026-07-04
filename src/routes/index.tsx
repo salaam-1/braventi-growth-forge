@@ -5,6 +5,10 @@ import businessTech from "@/assets/business-tech.jpg";
 import businessStructures from "@/assets/business-structures.jpg";
 import businessEnergy from "@/assets/business-energy.jpg";
 import businessMinerals from "@/assets/business-minerals.jpg";
+import leaderAbduljaleel from "@/assets/leader-abduljaleel.jpg.asset.json";
+import leaderUsmanYakubu from "@/assets/leader-usman-yakubu.jpg.asset.json";
+import leaderFahad from "@/assets/leader-fahad.jpg.asset.json";
+import leaderUsmanMusa from "@/assets/leader-usman-musa.jpg.asset.json";
 import {
   ArrowUpRight,
   Ship,
@@ -19,7 +23,6 @@ import {
   Users,
   Linkedin,
   Twitter,
-  User,
   Quote,
 } from "lucide-react";
 import { SectionHeader } from "@/components/site/PageHero";
@@ -92,6 +95,7 @@ type Leader = {
   name: string;
   role: string;
   org: string;
+  photo: string;
   quote?: string;
   linkedin?: string;
   twitter?: string;
@@ -102,6 +106,7 @@ const leaders: Leader[] = [
     name: "Sulaiman Abduljaleel Mahmud",
     role: "Chairman & CEO",
     org: "Braventi Holdings",
+    photo: leaderAbduljaleel.url,
     quote:
       "I don't pick industries. I pick broken systems, then I build companies to fix them.",
     linkedin: "#",
@@ -111,6 +116,7 @@ const leaders: Leader[] = [
     name: "Usman Yakubu",
     role: "Head of Product & Technology",
     org: "Braventi Holdings",
+    photo: leaderUsmanYakubu.url,
     quote:
       "I don't chase every idea. I chase the ones that survive contact with reality.",
     linkedin: "#",
@@ -120,6 +126,7 @@ const leaders: Leader[] = [
     name: "Fahad Zakariyya Ishaq",
     role: "Head of Operations",
     org: "Braventi Holdings",
+    photo: leaderFahad.url,
     quote:
       "History remembers those who transformed obstacles into opportunities for a nation, not just themselves.",
     linkedin: "#",
@@ -129,6 +136,7 @@ const leaders: Leader[] = [
     name: "Usman Musa",
     role: "Research and Development",
     org: "Braventi Holdings",
+    photo: leaderUsmanMusa.url,
     quote:
       "Every community deserves opportunities to grow. I am committed to connecting people with the resources, support, and partnerships that drive sustainable development.",
     linkedin: "#",
@@ -372,11 +380,13 @@ function Home() {
                 className="group rounded-sm border border-border bg-white overflow-hidden hover:border-primary/40 hover:shadow-[0_25px_60px_-40px_rgba(1,77,64,0.35)] transition"
               >
                 <div className="grid grid-cols-5">
-                  <div className="col-span-2 relative aspect-square bg-bone flex items-center justify-center overflow-hidden">
-                    <User size={64} strokeWidth={1} className="text-primary/30" />
-                    <div className="absolute bottom-3 left-3 text-[10px] uppercase tracking-widest text-muted-foreground">
-                      Photo pending
-                    </div>
+                  <div className="col-span-2 relative aspect-square bg-bone overflow-hidden">
+                    <img
+                      src={p.photo}
+                      alt={p.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                    />
                   </div>
                   <div className="col-span-3 p-8 flex flex-col">
                     {i === 0 && (

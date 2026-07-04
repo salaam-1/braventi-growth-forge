@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logoAsset from "@/assets/brave_logo.png.asset.json";
+import logoAsset from "@/assets/brave_logo_cropped.png.asset.json";
 
 type NavItem = {
   to: string;
@@ -77,10 +77,16 @@ export function SiteHeader() {
           <img
             src={logoAsset.url}
             alt="Braventi Holdings"
-            className="h-12 w-auto md:h-14"
-            width={56}
-            height={56}
+            className="h-16 w-auto md:h-20"
           />
+          <span className="hidden sm:flex flex-col leading-tight">
+            <span className="text-lg md:text-xl font-bold tracking-wide text-foreground">
+              BRAVENTI
+            </span>
+            <span className="text-[10px] md:text-xs font-semibold tracking-[0.28em] text-primary">
+              HOLDINGS
+            </span>
+          </span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">
