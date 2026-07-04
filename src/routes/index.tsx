@@ -19,7 +19,6 @@ import {
   Users,
   Linkedin,
   Twitter,
-  User,
   Quote,
 } from "lucide-react";
 import { SectionHeader } from "@/components/site/PageHero";
