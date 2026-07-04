@@ -9,38 +9,207 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as StoryRouteImport } from './routes/story'
+import { Route as LeadershipRouteImport } from './routes/leadership'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CareersRouteImport } from './routes/careers'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BusinessesIndexRouteImport } from './routes/businesses.index'
+import { Route as BusinessesTechworksRouteImport } from './routes/businesses.techworks'
+import { Route as BusinessesStructuresRouteImport } from './routes/businesses.structures'
+import { Route as BusinessesEximRouteImport } from './routes/businesses.exim'
+import { Route as BusinessesEnergiesRouteImport } from './routes/businesses.energies'
 
+const StoryRoute = StoryRouteImport.update({
+  id: '/story',
+  path: '/story',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeadershipRoute = LeadershipRouteImport.update({
+  id: '/leadership',
+  path: '/leadership',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BusinessesIndexRoute = BusinessesIndexRouteImport.update({
+  id: '/businesses/',
+  path: '/businesses/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessesTechworksRoute = BusinessesTechworksRouteImport.update({
+  id: '/businesses/techworks',
+  path: '/businesses/techworks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessesStructuresRoute = BusinessesStructuresRouteImport.update({
+  id: '/businesses/structures',
+  path: '/businesses/structures',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessesEximRoute = BusinessesEximRouteImport.update({
+  id: '/businesses/exim',
+  path: '/businesses/exim',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessesEnergiesRoute = BusinessesEnergiesRouteImport.update({
+  id: '/businesses/energies',
+  path: '/businesses/energies',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
+  '/leadership': typeof LeadershipRoute
+  '/story': typeof StoryRoute
+  '/businesses/energies': typeof BusinessesEnergiesRoute
+  '/businesses/exim': typeof BusinessesEximRoute
+  '/businesses/structures': typeof BusinessesStructuresRoute
+  '/businesses/techworks': typeof BusinessesTechworksRoute
+  '/businesses/': typeof BusinessesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
+  '/leadership': typeof LeadershipRoute
+  '/story': typeof StoryRoute
+  '/businesses/energies': typeof BusinessesEnergiesRoute
+  '/businesses/exim': typeof BusinessesEximRoute
+  '/businesses/structures': typeof BusinessesStructuresRoute
+  '/businesses/techworks': typeof BusinessesTechworksRoute
+  '/businesses': typeof BusinessesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
+  '/leadership': typeof LeadershipRoute
+  '/story': typeof StoryRoute
+  '/businesses/energies': typeof BusinessesEnergiesRoute
+  '/businesses/exim': typeof BusinessesEximRoute
+  '/businesses/structures': typeof BusinessesStructuresRoute
+  '/businesses/techworks': typeof BusinessesTechworksRoute
+  '/businesses/': typeof BusinessesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/careers'
+    | '/contact'
+    | '/leadership'
+    | '/story'
+    | '/businesses/energies'
+    | '/businesses/exim'
+    | '/businesses/structures'
+    | '/businesses/techworks'
+    | '/businesses/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/careers'
+    | '/contact'
+    | '/leadership'
+    | '/story'
+    | '/businesses/energies'
+    | '/businesses/exim'
+    | '/businesses/structures'
+    | '/businesses/techworks'
+    | '/businesses'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/careers'
+    | '/contact'
+    | '/leadership'
+    | '/story'
+    | '/businesses/energies'
+    | '/businesses/exim'
+    | '/businesses/structures'
+    | '/businesses/techworks'
+    | '/businesses/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  CareersRoute: typeof CareersRoute
+  ContactRoute: typeof ContactRoute
+  LeadershipRoute: typeof LeadershipRoute
+  StoryRoute: typeof StoryRoute
+  BusinessesEnergiesRoute: typeof BusinessesEnergiesRoute
+  BusinessesEximRoute: typeof BusinessesEximRoute
+  BusinessesStructuresRoute: typeof BusinessesStructuresRoute
+  BusinessesTechworksRoute: typeof BusinessesTechworksRoute
+  BusinessesIndexRoute: typeof BusinessesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/story': {
+      id: '/story'
+      path: '/story'
+      fullPath: '/story'
+      preLoaderRoute: typeof StoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leadership': {
+      id: '/leadership'
+      path: '/leadership'
+      fullPath: '/leadership'
+      preLoaderRoute: typeof LeadershipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +217,56 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/businesses/': {
+      id: '/businesses/'
+      path: '/businesses'
+      fullPath: '/businesses/'
+      preLoaderRoute: typeof BusinessesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/businesses/techworks': {
+      id: '/businesses/techworks'
+      path: '/businesses/techworks'
+      fullPath: '/businesses/techworks'
+      preLoaderRoute: typeof BusinessesTechworksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/businesses/structures': {
+      id: '/businesses/structures'
+      path: '/businesses/structures'
+      fullPath: '/businesses/structures'
+      preLoaderRoute: typeof BusinessesStructuresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/businesses/exim': {
+      id: '/businesses/exim'
+      path: '/businesses/exim'
+      fullPath: '/businesses/exim'
+      preLoaderRoute: typeof BusinessesEximRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/businesses/energies': {
+      id: '/businesses/energies'
+      path: '/businesses/energies'
+      fullPath: '/businesses/energies'
+      preLoaderRoute: typeof BusinessesEnergiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  CareersRoute: CareersRoute,
+  ContactRoute: ContactRoute,
+  LeadershipRoute: LeadershipRoute,
+  StoryRoute: StoryRoute,
+  BusinessesEnergiesRoute: BusinessesEnergiesRoute,
+  BusinessesEximRoute: BusinessesEximRoute,
+  BusinessesStructuresRoute: BusinessesStructuresRoute,
+  BusinessesTechworksRoute: BusinessesTechworksRoute,
+  BusinessesIndexRoute: BusinessesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
