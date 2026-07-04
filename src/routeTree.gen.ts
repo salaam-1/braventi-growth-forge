@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as StoryRouteImport } from './routes/story'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as LeadershipRouteImport } from './routes/leadership'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CareersRouteImport } from './routes/careers'
@@ -24,6 +25,11 @@ import { Route as BusinessesEnergiesRouteImport } from './routes/businesses.ener
 const StoryRoute = StoryRouteImport.update({
   id: '/story',
   path: '/story',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LeadershipRoute = LeadershipRouteImport.update({
@@ -83,6 +89,7 @@ export interface FileRoutesByFullPath {
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/leadership': typeof LeadershipRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/story': typeof StoryRoute
   '/businesses/energies': typeof BusinessesEnergiesRoute
   '/businesses/exim': typeof BusinessesEximRoute
@@ -96,6 +103,7 @@ export interface FileRoutesByTo {
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/leadership': typeof LeadershipRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/story': typeof StoryRoute
   '/businesses/energies': typeof BusinessesEnergiesRoute
   '/businesses/exim': typeof BusinessesEximRoute
@@ -110,6 +118,7 @@ export interface FileRoutesById {
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/leadership': typeof LeadershipRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/story': typeof StoryRoute
   '/businesses/energies': typeof BusinessesEnergiesRoute
   '/businesses/exim': typeof BusinessesEximRoute
@@ -125,6 +134,7 @@ export interface FileRouteTypes {
     | '/careers'
     | '/contact'
     | '/leadership'
+    | '/sitemap.xml'
     | '/story'
     | '/businesses/energies'
     | '/businesses/exim'
@@ -138,6 +148,7 @@ export interface FileRouteTypes {
     | '/careers'
     | '/contact'
     | '/leadership'
+    | '/sitemap.xml'
     | '/story'
     | '/businesses/energies'
     | '/businesses/exim'
@@ -151,6 +162,7 @@ export interface FileRouteTypes {
     | '/careers'
     | '/contact'
     | '/leadership'
+    | '/sitemap.xml'
     | '/story'
     | '/businesses/energies'
     | '/businesses/exim'
@@ -165,6 +177,7 @@ export interface RootRouteChildren {
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
   LeadershipRoute: typeof LeadershipRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StoryRoute: typeof StoryRoute
   BusinessesEnergiesRoute: typeof BusinessesEnergiesRoute
   BusinessesEximRoute: typeof BusinessesEximRoute
@@ -180,6 +193,13 @@ declare module '@tanstack/react-router' {
       path: '/story'
       fullPath: '/story'
       preLoaderRoute: typeof StoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/leadership': {
@@ -261,6 +281,7 @@ const rootRouteChildren: RootRouteChildren = {
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
   LeadershipRoute: LeadershipRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   StoryRoute: StoryRoute,
   BusinessesEnergiesRoute: BusinessesEnergiesRoute,
   BusinessesEximRoute: BusinessesEximRoute,
@@ -271,3 +292,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
