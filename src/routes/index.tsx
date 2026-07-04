@@ -5,6 +5,10 @@ import businessTech from "@/assets/business-tech.jpg";
 import businessStructures from "@/assets/business-structures.jpg";
 import businessEnergy from "@/assets/business-energy.jpg";
 import businessMinerals from "@/assets/business-minerals.jpg";
+import leaderAbduljaleel from "@/assets/leader-abduljaleel.jpg.asset.json";
+import leaderUsmanYakubu from "@/assets/leader-usman-yakubu.jpg.asset.json";
+import leaderFahad from "@/assets/leader-fahad.jpg.asset.json";
+import leaderUsmanMusa from "@/assets/leader-usman-musa.jpg.asset.json";
 import {
   ArrowUpRight,
   Ship,
