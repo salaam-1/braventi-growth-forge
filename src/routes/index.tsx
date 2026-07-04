@@ -95,6 +95,7 @@ type Leader = {
   name: string;
   role: string;
   org: string;
+  photo: string;
   quote?: string;
   linkedin?: string;
   twitter?: string;
@@ -379,11 +380,13 @@ function Home() {
                 className="group rounded-sm border border-border bg-white overflow-hidden hover:border-primary/40 hover:shadow-[0_25px_60px_-40px_rgba(1,77,64,0.35)] transition"
               >
                 <div className="grid grid-cols-5">
-                  <div className="col-span-2 relative aspect-square bg-bone flex items-center justify-center overflow-hidden">
-                    <User size={64} strokeWidth={1} className="text-primary/30" />
-                    <div className="absolute bottom-3 left-3 text-[10px] uppercase tracking-widest text-muted-foreground">
-                      Photo pending
-                    </div>
+                  <div className="col-span-2 relative aspect-square bg-bone overflow-hidden">
+                    <img
+                      src={p.photo}
+                      alt={p.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                    />
                   </div>
                   <div className="col-span-3 p-8 flex flex-col">
                     {i === 0 && (
