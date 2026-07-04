@@ -54,8 +54,8 @@ function ContactPage() {
                 </span>
                 <div>
                   <p className="text-xs uppercase tracking-widest text-muted-foreground">Email</p>
-                  <a href="mailto:hello@braventi.com" className="mt-1 block text-foreground hover:text-primary">
-                    hello@braventi.com
+                  <a href="mailto:braventitechnologies@gmail.com" className="mt-1 block text-foreground hover:text-primary">
+                    braventitechnologies@gmail.com
                   </a>
                 </div>
               </li>
