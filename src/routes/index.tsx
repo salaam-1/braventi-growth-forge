@@ -353,6 +353,85 @@ function Home() {
         </div>
       </section>
 
+      {/* LEADERSHIP */}
+      <section id="leadership" className="py-24 md:py-32 scroll-mt-24">
+        <div className="container-x">
+          <SectionHeader
+            eyebrow="Leadership"
+            title="The people building Braventi Holdings."
+          />
+          <p className="mt-6 max-w-2xl text-base md:text-lg text-muted-foreground leading-relaxed">
+            Our leadership team brings entrepreneurial experience, deep operating
+            discipline and a shared commitment to building enduring businesses.
+          </p>
+
+          <div className="mt-16 grid gap-8 md:grid-cols-2">
+            {leaders.map((p, i) => (
+              <div
+                key={p.name}
+                className="group rounded-sm border border-border bg-white overflow-hidden hover:border-primary/40 hover:shadow-[0_25px_60px_-40px_rgba(1,77,64,0.35)] transition"
+              >
+                <div className="grid grid-cols-5">
+                  <div className="col-span-2 relative aspect-square bg-bone flex items-center justify-center overflow-hidden">
+                    <User size={64} strokeWidth={1} className="text-primary/30" />
+                    <div className="absolute bottom-3 left-3 text-[10px] uppercase tracking-widest text-muted-foreground">
+                      Photo pending
+                    </div>
+                  </div>
+                  <div className="col-span-3 p-8 flex flex-col">
+                    {i === 0 && (
+                      <span className="mb-4 inline-flex self-start rounded-full bg-gold/10 border border-gold/40 px-3 py-1 text-[10px] uppercase tracking-widest text-gold">
+                        Chairman
+                      </span>
+                    )}
+                    <h3 className="text-xl md:text-2xl font-display leading-snug">
+                      {p.name}
+                    </h3>
+                    <p className="mt-2 text-sm text-primary font-medium">
+                      {p.role}
+                    </p>
+                    <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
+                      {p.org}
+                    </p>
+                    {p.quote && (
+                      <blockquote className="mt-5 relative border-l-2 border-gold/60 pl-4">
+                        <Quote
+                          size={14}
+                          className="absolute -left-[7px] -top-1 bg-white text-gold"
+                        />
+                        <p className="italic text-sm text-foreground/80 leading-relaxed">
+                          {p.quote}
+                        </p>
+                      </blockquote>
+                    )}
+                    <div className="mt-auto pt-6 flex items-center gap-2">
+                      {p.linkedin && (
+                        <a
+                          href={p.linkedin}
+                          aria-label={`${p.name} on LinkedIn`}
+                          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground hover:border-primary hover:text-primary transition"
+                        >
+                          <Linkedin size={14} />
+                        </a>
+                      )}
+                      {p.twitter && (
+                        <a
+                          href={p.twitter}
+                          aria-label={`${p.name} on Twitter`}
+                          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground hover:border-primary hover:text-primary transition"
+                        >
+                          <Twitter size={14} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-24 md:py-32">
         <div className="container-x">
