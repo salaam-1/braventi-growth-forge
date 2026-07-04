@@ -88,6 +88,54 @@ const businesses = [
   },
 ];
 
+type Leader = {
+  name: string;
+  role: string;
+  org: string;
+  quote?: string;
+  linkedin?: string;
+  twitter?: string;
+};
+
+const leaders: Leader[] = [
+  {
+    name: "Sulaiman Abduljaleel Mahmud",
+    role: "Chairman & CEO",
+    org: "Braventi Holdings",
+    quote:
+      "I don't pick industries. I pick broken systems, then I build companies to fix them.",
+    linkedin: "#",
+    twitter: "#",
+  },
+  {
+    name: "Usman Yakubu",
+    role: "Head of Product & Technology",
+    org: "Braventi Holdings",
+    quote:
+      "I don't chase every idea. I chase the ones that survive contact with reality.",
+    linkedin: "#",
+    twitter: "#",
+  },
+  {
+    name: "Fahad Zakariyya Ishaq",
+    role: "Head of Operations",
+    org: "Braventi Holdings",
+    quote:
+      "History remembers those who transformed obstacles into opportunities for a nation, not just themselves.",
+    linkedin: "#",
+    twitter: "#",
+  },
+  {
+    name: "Usman Musa",
+    role: "Research and Development",
+    org: "Braventi Holdings",
+    quote:
+      "Every community deserves opportunities to grow. I am committed to connecting people with the resources, support, and partnerships that drive sustainable development.",
+    linkedin: "#",
+    twitter: "#",
+  },
+];
+
 function Home() {
   return (
     <>
