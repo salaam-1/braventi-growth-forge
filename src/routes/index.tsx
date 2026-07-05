@@ -96,6 +96,7 @@ type Leader = {
   role: string;
   org: string;
   photo: string;
+  photoClassName?: string;
   quote?: string;
   linkedin?: string;
   twitter?: string;
