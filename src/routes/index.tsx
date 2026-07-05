@@ -388,15 +388,11 @@ function Home() {
                       src={p.photo}
                       alt={p.name}
                       loading="lazy"
-                      className="h-full w-full object-cover object-top"
+                      className={`h-full w-full object-cover object-top ${p.photoClassName ?? ""}`}
                     />
                   </div>
                   <div className="col-span-3 p-8 flex flex-col">
-                    {i === 0 && (
-                      <span className="mb-4 inline-flex self-start rounded-full bg-gold/10 border border-gold/40 px-3 py-1 text-[10px] uppercase tracking-widest text-gold">
-                        Chairman
-                      </span>
-                    )}
+
                     <h3 className="text-xl md:text-2xl font-display leading-snug">
                       {p.name}
                     </h3>
