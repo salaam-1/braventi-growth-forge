@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Braventi Holdings — Building Businesses That Matter" },
+      { title: "Braventi Holdings | Nigerian Diversified Holding Company" },
       {
         name: "description",
         content:
@@ -85,7 +85,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { name: "author", content: "Braventi Holdings" },
       { name: "theme-color", content: "#014D40" },
-      { property: "og:title", content: "Braventi Holdings" },
+      { property: "og:title", content: "Braventi Holdings | Nigerian Diversified Holding Company" },
       {
         property: "og:description",
         content:
@@ -93,6 +93,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Braventi Holdings | Nigerian Diversified Holding Company" },
+      { name: "description", content: "Braventi Holdings is a Nigerian diversified holding company building enduring businesses across technology, trade, real estate, and energy." },
+      { property: "og:description", content: "Braventi Holdings is a Nigerian diversified holding company building enduring businesses across technology, trade, real estate, and energy." },
+      { name: "twitter:description", content: "Braventi Holdings is a Nigerian diversified holding company building enduring businesses across technology, trade, real estate, and energy." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/08aa89a1-f93d-4265-abd1-ea37615cccf2" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/08aa89a1-f93d-4265-abd1-ea37615cccf2" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
