@@ -128,7 +128,7 @@ const leaders: Leader[] = [
     role: "Head of Operations",
     org: "Braventi Holdings",
     photo: leaderFahad.url,
-    photoClassName: "scale-90 origin-top",
+    photoClassName: "!object-contain",
     quote:
       "History remembers those who transformed obstacles into opportunities for a nation, not just themselves.",
     linkedin: "#",
@@ -139,7 +139,7 @@ const leaders: Leader[] = [
     role: "Research and Development",
     org: "Braventi Holdings",
     photo: leaderUsmanMusa.url,
-    photoClassName: "scale-90 origin-top",
+    photoClassName: "!object-contain",
     quote:
       "Every community deserves opportunities to grow. I am committed to connecting people with the resources, support, and partnerships that drive sustainable development.",
     linkedin: "#",
