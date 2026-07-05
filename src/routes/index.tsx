@@ -96,6 +96,7 @@ type Leader = {
   role: string;
   org: string;
   photo: string;
+  photoClassName?: string;
   quote?: string;
   linkedin?: string;
   twitter?: string;
@@ -127,6 +128,7 @@ const leaders: Leader[] = [
     role: "Head of Operations",
     org: "Braventi Holdings",
     photo: leaderFahad.url,
+    photoClassName: "scale-90 origin-top",
     quote:
       "History remembers those who transformed obstacles into opportunities for a nation, not just themselves.",
     linkedin: "#",
@@ -137,6 +139,7 @@ const leaders: Leader[] = [
     role: "Research and Development",
     org: "Braventi Holdings",
     photo: leaderUsmanMusa.url,
+    photoClassName: "scale-90 origin-top",
     quote:
       "Every community deserves opportunities to grow. I am committed to connecting people with the resources, support, and partnerships that drive sustainable development.",
     linkedin: "#",
@@ -385,15 +388,11 @@ function Home() {
                       src={p.photo}
                       alt={p.name}
                       loading="lazy"
-                      className="h-full w-full object-cover object-top"
+                      className={`h-full w-full object-cover object-top ${p.photoClassName ?? ""}`}
                     />
                   </div>
                   <div className="col-span-3 p-8 flex flex-col">
-                    {i === 0 && (
-                      <span className="mb-4 inline-flex self-start rounded-full bg-gold/10 border border-gold/40 px-3 py-1 text-[10px] uppercase tracking-widest text-gold">
-                        Chairman
-                      </span>
-                    )}
+
                     <h3 className="text-xl md:text-2xl font-display leading-snug">
                       {p.name}
                     </h3>
