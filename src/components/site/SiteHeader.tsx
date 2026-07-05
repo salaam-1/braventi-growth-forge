@@ -77,7 +77,7 @@ export function SiteHeader() {
           <img
             src={logoAsset.url}
             alt="Braventi Holdings"
-            className="h-16 w-auto md:h-20"
+            className="h-12 w-auto md:h-14"
           />
           <span className="hidden sm:flex flex-col leading-tight">
             <span className="text-lg md:text-xl font-bold tracking-wide text-foreground">

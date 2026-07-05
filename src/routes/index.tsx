@@ -377,7 +377,7 @@ function Home() {
             {leaders.map((p, i) => (
               <div
                 key={p.name}
-                className="group rounded-sm border border-border bg-white overflow-hidden hover:border-primary/40 hover:shadow-[0_25px_60px_-40px_rgba(1,77,64,0.35)] transition"
+                className="group rounded-xl border border-border bg-white overflow-hidden shadow-[0_10px_30px_-12px_rgba(15,23,42,0.15)] hover:border-primary/40 hover:shadow-[0_25px_60px_-30px_rgba(1,77,64,0.35)] transition"
               >
                 <div className="grid grid-cols-5">
                   <div className="col-span-2 relative aspect-square bg-bone overflow-hidden">
@@ -385,7 +385,7 @@ function Home() {
                       src={p.photo}
                       alt={p.name}
                       loading="lazy"
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-cover object-top"
                     />
                   </div>
                   <div className="col-span-3 p-8 flex flex-col">
