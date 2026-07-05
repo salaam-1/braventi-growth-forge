@@ -139,7 +139,7 @@ const leaders: Leader[] = [
     role: "Research and Development",
     org: "Braventi Holdings",
     photo: leaderUsmanMusa.url,
-    photoClassName: "!object-contain",
+    photoClassName: "scale-110 origin-top",
     quote:
       "Every community deserves opportunities to grow. I am committed to connecting people with the resources, support, and partnerships that drive sustainable development.",
     linkedin: "#",
