@@ -128,7 +128,7 @@ const leaders: Leader[] = [
     role: "Head of Operations",
     org: "Braventi Holdings",
     photo: leaderFahad.url,
-    photoClassName: "!object-contain",
+    photoClassName: "scale-110 origin-top",
     quote:
       "History remembers those who transformed obstacles into opportunities for a nation, not just themselves.",
     linkedin: "#",
