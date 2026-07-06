@@ -79,11 +79,11 @@ export function SiteHeader() {
             alt="Braventi Holdings"
             className="h-12 w-auto md:h-14"
           />
-          <span className="hidden sm:flex flex-col leading-tight">
-            <span className="text-lg md:text-xl font-bold tracking-wide text-foreground">
+          <span className="flex flex-col leading-tight">
+            <span className="text-base md:text-xl font-bold tracking-wide text-foreground">
               BRAVENTI
             </span>
-            <span className="text-[10px] md:text-xs font-semibold tracking-[0.28em] text-primary">
+            <span className="text-[9px] md:text-xs font-semibold tracking-[0.28em] text-primary">
               HOLDINGS
             </span>
           </span>

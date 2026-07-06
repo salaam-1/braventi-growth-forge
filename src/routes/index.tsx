@@ -110,8 +110,8 @@ const leaders: Leader[] = [
     photo: leaderAbduljaleel.url,
     quote:
       "I don't pick industries. I pick broken systems, then I build companies to fix them.",
-    linkedin: "#",
-    twitter: "#",
+    linkedin: "https://ng.linkedin.com/in/abduljaleel-sulaiman-57baa31a6",
+    twitter: "https://x.com/2_blacktiger?s=11",
   },
   {
     name: "Usman Yakubu",
@@ -121,7 +121,7 @@ const leaders: Leader[] = [
     quote:
       "I don't chase every idea. I chase the ones that survive contact with reality.",
     linkedin: "#",
-    twitter: "#",
+    twitter: "https://x.com/Novjid_Usman",
   },
   {
     name: "Fahad Zakariyya Ishaq",
@@ -132,7 +132,7 @@ const leaders: Leader[] = [
     quote:
       "History remembers those who transformed obstacles into opportunities for a nation, not just themselves.",
     linkedin: "#",
-    twitter: "#",
+    twitter: "https://x.com/FahadZakar2548",
   },
   {
     name: "Usman Musa",
@@ -143,7 +143,7 @@ const leaders: Leader[] = [
     quote:
       "Every community deserves opportunities to grow. I am committed to connecting people with the resources, support, and partnerships that drive sustainable development.",
     linkedin: "#",
-    twitter: "#",
+    twitter: "https://x.com/MusaUsman637655",
   },
 ];
 
