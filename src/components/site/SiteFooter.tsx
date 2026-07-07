@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Linkedin, Twitter, Mail } from "lucide-react";
+import logoAsset from "@/assets/brave_logo_cropped.png.asset.json";
 
 export function SiteFooter() {
   return (
@@ -8,9 +9,11 @@ export function SiteFooter() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-3">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-sm bg-primary text-primary-foreground font-display text-lg">
-                B
-              </span>
+              <img
+                src={logoAsset.url}
+                alt="Braventi Holdings"
+                className="h-11 w-auto"
+              />
               <div className="leading-none">
                 <div className="font-display text-xl text-white">Braventi</div>
                 <div className="text-[10px] uppercase tracking-[0.28em] text-white/60">
