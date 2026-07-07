@@ -99,8 +99,10 @@ export function SiteFooter() {
                 <Linkedin size={15} />
               </a>
               <a
-                href="#"
-                aria-label="Twitter"
+                href="https://x.com/Braventi_"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X (Twitter)"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white/80 hover:border-gold hover:text-gold transition"
               >
                 <Twitter size={15} />
