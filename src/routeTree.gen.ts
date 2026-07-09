@@ -20,6 +20,9 @@ import { Route as BusinessesTechworksRouteImport } from './routes/businesses.tec
 import { Route as BusinessesStructuresRouteImport } from './routes/businesses.structures'
 import { Route as BusinessesEximRouteImport } from './routes/businesses.exim'
 import { Route as BusinessesEnergiesRouteImport } from './routes/businesses.energies'
+import { Route as BusinessesTechworksLoamyRouteImport } from './routes/businesses.techworks.loamy'
+import { Route as BusinessesTechworksLoamyDashboardRouteImport } from './routes/businesses.techworks.loamy.dashboard'
+import { Route as BusinessesTechworksLoamyAuthRouteImport } from './routes/businesses.techworks.loamy.auth'
 
 const StoryRoute = StoryRouteImport.update({
   id: '/story',
@@ -76,6 +79,24 @@ const BusinessesEnergiesRoute = BusinessesEnergiesRouteImport.update({
   path: '/businesses/energies',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BusinessesTechworksLoamyRoute =
+  BusinessesTechworksLoamyRouteImport.update({
+    id: '/loamy',
+    path: '/loamy',
+    getParentRoute: () => BusinessesTechworksRoute,
+  } as any)
+const BusinessesTechworksLoamyDashboardRoute =
+  BusinessesTechworksLoamyDashboardRouteImport.update({
+    id: '/dashboard',
+    path: '/dashboard',
+    getParentRoute: () => BusinessesTechworksLoamyRoute,
+  } as any)
+const BusinessesTechworksLoamyAuthRoute =
+  BusinessesTechworksLoamyAuthRouteImport.update({
+    id: '/auth',
+    path: '/auth',
+    getParentRoute: () => BusinessesTechworksLoamyRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -87,8 +108,11 @@ export interface FileRoutesByFullPath {
   '/businesses/energies': typeof BusinessesEnergiesRoute
   '/businesses/exim': typeof BusinessesEximRoute
   '/businesses/structures': typeof BusinessesStructuresRoute
-  '/businesses/techworks': typeof BusinessesTechworksRoute
+  '/businesses/techworks': typeof BusinessesTechworksRouteWithChildren
   '/businesses/': typeof BusinessesIndexRoute
+  '/businesses/techworks/loamy': typeof BusinessesTechworksLoamyRouteWithChildren
+  '/businesses/techworks/loamy/auth': typeof BusinessesTechworksLoamyAuthRoute
+  '/businesses/techworks/loamy/dashboard': typeof BusinessesTechworksLoamyDashboardRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -100,8 +124,11 @@ export interface FileRoutesByTo {
   '/businesses/energies': typeof BusinessesEnergiesRoute
   '/businesses/exim': typeof BusinessesEximRoute
   '/businesses/structures': typeof BusinessesStructuresRoute
-  '/businesses/techworks': typeof BusinessesTechworksRoute
+  '/businesses/techworks': typeof BusinessesTechworksRouteWithChildren
   '/businesses': typeof BusinessesIndexRoute
+  '/businesses/techworks/loamy': typeof BusinessesTechworksLoamyRouteWithChildren
+  '/businesses/techworks/loamy/auth': typeof BusinessesTechworksLoamyAuthRoute
+  '/businesses/techworks/loamy/dashboard': typeof BusinessesTechworksLoamyDashboardRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -114,8 +141,11 @@ export interface FileRoutesById {
   '/businesses/energies': typeof BusinessesEnergiesRoute
   '/businesses/exim': typeof BusinessesEximRoute
   '/businesses/structures': typeof BusinessesStructuresRoute
-  '/businesses/techworks': typeof BusinessesTechworksRoute
+  '/businesses/techworks': typeof BusinessesTechworksRouteWithChildren
   '/businesses/': typeof BusinessesIndexRoute
+  '/businesses/techworks/loamy': typeof BusinessesTechworksLoamyRouteWithChildren
+  '/businesses/techworks/loamy/auth': typeof BusinessesTechworksLoamyAuthRoute
+  '/businesses/techworks/loamy/dashboard': typeof BusinessesTechworksLoamyDashboardRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -131,6 +161,9 @@ export interface FileRouteTypes {
     | '/businesses/structures'
     | '/businesses/techworks'
     | '/businesses/'
+    | '/businesses/techworks/loamy'
+    | '/businesses/techworks/loamy/auth'
+    | '/businesses/techworks/loamy/dashboard'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -144,6 +177,9 @@ export interface FileRouteTypes {
     | '/businesses/structures'
     | '/businesses/techworks'
     | '/businesses'
+    | '/businesses/techworks/loamy'
+    | '/businesses/techworks/loamy/auth'
+    | '/businesses/techworks/loamy/dashboard'
   id:
     | '__root__'
     | '/'
@@ -157,6 +193,9 @@ export interface FileRouteTypes {
     | '/businesses/structures'
     | '/businesses/techworks'
     | '/businesses/'
+    | '/businesses/techworks/loamy'
+    | '/businesses/techworks/loamy/auth'
+    | '/businesses/techworks/loamy/dashboard'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -169,7 +208,7 @@ export interface RootRouteChildren {
   BusinessesEnergiesRoute: typeof BusinessesEnergiesRoute
   BusinessesEximRoute: typeof BusinessesEximRoute
   BusinessesStructuresRoute: typeof BusinessesStructuresRoute
-  BusinessesTechworksRoute: typeof BusinessesTechworksRoute
+  BusinessesTechworksRoute: typeof BusinessesTechworksRouteWithChildren
   BusinessesIndexRoute: typeof BusinessesIndexRoute
 }
 
@@ -252,8 +291,57 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BusinessesEnergiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/businesses/techworks/loamy': {
+      id: '/businesses/techworks/loamy'
+      path: '/loamy'
+      fullPath: '/businesses/techworks/loamy'
+      preLoaderRoute: typeof BusinessesTechworksLoamyRouteImport
+      parentRoute: typeof BusinessesTechworksRoute
+    }
+    '/businesses/techworks/loamy/dashboard': {
+      id: '/businesses/techworks/loamy/dashboard'
+      path: '/dashboard'
+      fullPath: '/businesses/techworks/loamy/dashboard'
+      preLoaderRoute: typeof BusinessesTechworksLoamyDashboardRouteImport
+      parentRoute: typeof BusinessesTechworksLoamyRoute
+    }
+    '/businesses/techworks/loamy/auth': {
+      id: '/businesses/techworks/loamy/auth'
+      path: '/auth'
+      fullPath: '/businesses/techworks/loamy/auth'
+      preLoaderRoute: typeof BusinessesTechworksLoamyAuthRouteImport
+      parentRoute: typeof BusinessesTechworksLoamyRoute
+    }
   }
 }
+
+interface BusinessesTechworksLoamyRouteChildren {
+  BusinessesTechworksLoamyAuthRoute: typeof BusinessesTechworksLoamyAuthRoute
+  BusinessesTechworksLoamyDashboardRoute: typeof BusinessesTechworksLoamyDashboardRoute
+}
+
+const BusinessesTechworksLoamyRouteChildren: BusinessesTechworksLoamyRouteChildren =
+  {
+    BusinessesTechworksLoamyAuthRoute: BusinessesTechworksLoamyAuthRoute,
+    BusinessesTechworksLoamyDashboardRoute:
+      BusinessesTechworksLoamyDashboardRoute,
+  }
+
+const BusinessesTechworksLoamyRouteWithChildren =
+  BusinessesTechworksLoamyRoute._addFileChildren(
+    BusinessesTechworksLoamyRouteChildren,
+  )
+
+interface BusinessesTechworksRouteChildren {
+  BusinessesTechworksLoamyRoute: typeof BusinessesTechworksLoamyRouteWithChildren
+}
+
+const BusinessesTechworksRouteChildren: BusinessesTechworksRouteChildren = {
+  BusinessesTechworksLoamyRoute: BusinessesTechworksLoamyRouteWithChildren,
+}
+
+const BusinessesTechworksRouteWithChildren =
+  BusinessesTechworksRoute._addFileChildren(BusinessesTechworksRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -265,19 +353,9 @@ const rootRouteChildren: RootRouteChildren = {
   BusinessesEnergiesRoute: BusinessesEnergiesRoute,
   BusinessesEximRoute: BusinessesEximRoute,
   BusinessesStructuresRoute: BusinessesStructuresRoute,
-  BusinessesTechworksRoute: BusinessesTechworksRoute,
+  BusinessesTechworksRoute: BusinessesTechworksRouteWithChildren,
   BusinessesIndexRoute: BusinessesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
