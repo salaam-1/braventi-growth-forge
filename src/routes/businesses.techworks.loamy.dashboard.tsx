@@ -380,7 +380,7 @@ function TagPickerCard({
 
   async function toggle(tag: string) {
     if (selected.includes(tag)) {
-      const { error } = await supabase.from(table).delete().eq("user_id", userId).eq(column, tag);
+      const { error } = await supabase.from(table).delete().eq("user_id", userId).eq(column as never, tag);
       if (error) return toast.error(error.message);
       onChange(selected.filter((t) => t !== tag));
     } else {
