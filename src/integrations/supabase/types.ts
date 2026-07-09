@@ -14,16 +14,235 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      launch_config: {
+        Row: {
+          id: number
+          launch_date: string
+          updated_at: string
+        }
+        Insert: {
+          id?: number
+          launch_date: string
+          updated_at?: string
+        }
+        Update: {
+          id?: number
+          launch_date?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      launch_progress: {
+        Row: {
+          id: string
+          module_name: string
+          sort_order: number
+          status: Database["public"]["Enums"]["module_status"]
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          module_name: string
+          sort_order?: number
+          status?: Database["public"]["Enums"]["module_status"]
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          module_name?: string
+          sort_order?: number
+          status?: Database["public"]["Enums"]["module_status"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          address: string | null
+          business_name: string | null
+          category: Database["public"]["Enums"]["user_category"]
+          created_at: string
+          email: string | null
+          founding_member: boolean
+          founding_member_number: number
+          full_name: string
+          id: string
+          lga: string | null
+          phone: string
+          profile_completion: number
+          referral_code: string
+          referred_by_code: string | null
+          state: string | null
+          updated_at: string
+        }
+        Insert: {
+          address?: string | null
+          business_name?: string | null
+          category: Database["public"]["Enums"]["user_category"]
+          created_at?: string
+          email?: string | null
+          founding_member?: boolean
+          founding_member_number?: number
+          full_name?: string
+          id: string
+          lga?: string | null
+          phone?: string
+          profile_completion?: number
+          referral_code: string
+          referred_by_code?: string | null
+          state?: string | null
+          updated_at?: string
+        }
+        Update: {
+          address?: string | null
+          business_name?: string | null
+          category?: Database["public"]["Enums"]["user_category"]
+          created_at?: string
+          email?: string | null
+          founding_member?: boolean
+          founding_member_number?: number
+          full_name?: string
+          id?: string
+          lga?: string | null
+          phone?: string
+          profile_completion?: number
+          referral_code?: string
+          referred_by_code?: string | null
+          state?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      referrals: {
+        Row: {
+          created_at: string
+          id: string
+          referral_code: string
+          referred_user_id: string | null
+          referrer_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          referral_code: string
+          referred_user_id?: string | null
+          referrer_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          referral_code?: string
+          referred_user_id?: string | null
+          referrer_id?: string
+        }
+        Relationships: []
+      }
+      user_commodities: {
+        Row: {
+          commodity: string
+          created_at: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          commodity: string
+          created_at?: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          commodity?: string
+          created_at?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_interests: {
+        Row: {
+          created_at: string
+          id: string
+          interest: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          interest: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          interest?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      community_stats: { Args: never; Returns: Json }
+      compute_profile_completion: {
+        Args: { p: Database["public"]["Tables"]["profiles"]["Row"] }
+        Returns: number
+      }
+      generate_referral_code: { Args: never; Returns: string }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      is_admin: { Args: { _user_id: string }; Returns: boolean }
     }
     Enums: {
-      [_ in never]: never
+      app_role:
+        | "super_admin"
+        | "admin"
+        | "support"
+        | "farmer"
+        | "trader"
+        | "exporter"
+        | "warehouse_owner"
+        | "logistics_provider"
+        | "buyer"
+        | "input_supplier"
+        | "growth_partner"
+      module_status: "done" | "in_progress" | "planned"
+      user_category:
+        | "farmer"
+        | "trader"
+        | "exporter"
+        | "warehouse_owner"
+        | "logistics_provider"
+        | "growth_partner"
+        | "input_supplier"
+        | "buyer"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +369,31 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: [
+        "super_admin",
+        "admin",
+        "support",
+        "farmer",
+        "trader",
+        "exporter",
+        "warehouse_owner",
+        "logistics_provider",
+        "buyer",
+        "input_supplier",
+        "growth_partner",
+      ],
+      module_status: ["done", "in_progress", "planned"],
+      user_category: [
+        "farmer",
+        "trader",
+        "exporter",
+        "warehouse_owner",
+        "logistics_provider",
+        "growth_partner",
+        "input_supplier",
+        "buyer",
+      ],
+    },
   },
 } as const
