@@ -211,14 +211,6 @@ export type Database = {
         Returns: number
       }
       generate_referral_code: { Args: never; Returns: string }
-      has_role: {
-        Args: {
-          _role: Database["public"]["Enums"]["app_role"]
-          _user_id: string
-        }
-        Returns: boolean
-      }
-      is_admin: { Args: { _user_id: string }; Returns: boolean }
     }
     Enums: {
       app_role:
