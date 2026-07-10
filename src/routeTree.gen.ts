@@ -20,6 +20,7 @@ import { Route as BusinessesTechworksRouteImport } from './routes/businesses.tec
 import { Route as BusinessesStructuresRouteImport } from './routes/businesses.structures'
 import { Route as BusinessesEximRouteImport } from './routes/businesses.exim'
 import { Route as BusinessesEnergiesRouteImport } from './routes/businesses.energies'
+import { Route as BusinessesTechworksIndexRouteImport } from './routes/businesses.techworks.index'
 import { Route as BusinessesTechworksLoamyRouteImport } from './routes/businesses.techworks.loamy'
 import { Route as BusinessesTechworksLoamyDashboardRouteImport } from './routes/businesses.techworks.loamy.dashboard'
 import { Route as BusinessesTechworksLoamyAuthRouteImport } from './routes/businesses.techworks.loamy.auth'
@@ -79,6 +80,12 @@ const BusinessesEnergiesRoute = BusinessesEnergiesRouteImport.update({
   path: '/businesses/energies',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BusinessesTechworksIndexRoute =
+  BusinessesTechworksIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => BusinessesTechworksRoute,
+  } as any)
 const BusinessesTechworksLoamyRoute =
   BusinessesTechworksLoamyRouteImport.update({
     id: '/loamy',
@@ -111,6 +118,7 @@ export interface FileRoutesByFullPath {
   '/businesses/techworks': typeof BusinessesTechworksRouteWithChildren
   '/businesses/': typeof BusinessesIndexRoute
   '/businesses/techworks/loamy': typeof BusinessesTechworksLoamyRouteWithChildren
+  '/businesses/techworks/': typeof BusinessesTechworksIndexRoute
   '/businesses/techworks/loamy/auth': typeof BusinessesTechworksLoamyAuthRoute
   '/businesses/techworks/loamy/dashboard': typeof BusinessesTechworksLoamyDashboardRoute
 }
@@ -124,9 +132,9 @@ export interface FileRoutesByTo {
   '/businesses/energies': typeof BusinessesEnergiesRoute
   '/businesses/exim': typeof BusinessesEximRoute
   '/businesses/structures': typeof BusinessesStructuresRoute
-  '/businesses/techworks': typeof BusinessesTechworksRouteWithChildren
   '/businesses': typeof BusinessesIndexRoute
   '/businesses/techworks/loamy': typeof BusinessesTechworksLoamyRouteWithChildren
+  '/businesses/techworks': typeof BusinessesTechworksIndexRoute
   '/businesses/techworks/loamy/auth': typeof BusinessesTechworksLoamyAuthRoute
   '/businesses/techworks/loamy/dashboard': typeof BusinessesTechworksLoamyDashboardRoute
 }
@@ -144,6 +152,7 @@ export interface FileRoutesById {
   '/businesses/techworks': typeof BusinessesTechworksRouteWithChildren
   '/businesses/': typeof BusinessesIndexRoute
   '/businesses/techworks/loamy': typeof BusinessesTechworksLoamyRouteWithChildren
+  '/businesses/techworks/': typeof BusinessesTechworksIndexRoute
   '/businesses/techworks/loamy/auth': typeof BusinessesTechworksLoamyAuthRoute
   '/businesses/techworks/loamy/dashboard': typeof BusinessesTechworksLoamyDashboardRoute
 }
@@ -162,6 +171,7 @@ export interface FileRouteTypes {
     | '/businesses/techworks'
     | '/businesses/'
     | '/businesses/techworks/loamy'
+    | '/businesses/techworks/'
     | '/businesses/techworks/loamy/auth'
     | '/businesses/techworks/loamy/dashboard'
   fileRoutesByTo: FileRoutesByTo
@@ -175,9 +185,9 @@ export interface FileRouteTypes {
     | '/businesses/energies'
     | '/businesses/exim'
     | '/businesses/structures'
-    | '/businesses/techworks'
     | '/businesses'
     | '/businesses/techworks/loamy'
+    | '/businesses/techworks'
     | '/businesses/techworks/loamy/auth'
     | '/businesses/techworks/loamy/dashboard'
   id:
@@ -194,6 +204,7 @@ export interface FileRouteTypes {
     | '/businesses/techworks'
     | '/businesses/'
     | '/businesses/techworks/loamy'
+    | '/businesses/techworks/'
     | '/businesses/techworks/loamy/auth'
     | '/businesses/techworks/loamy/dashboard'
   fileRoutesById: FileRoutesById
@@ -291,6 +302,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BusinessesEnergiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/businesses/techworks/': {
+      id: '/businesses/techworks/'
+      path: '/'
+      fullPath: '/businesses/techworks/'
+      preLoaderRoute: typeof BusinessesTechworksIndexRouteImport
+      parentRoute: typeof BusinessesTechworksRoute
+    }
     '/businesses/techworks/loamy': {
       id: '/businesses/techworks/loamy'
       path: '/loamy'
@@ -334,10 +352,12 @@ const BusinessesTechworksLoamyRouteWithChildren =
 
 interface BusinessesTechworksRouteChildren {
   BusinessesTechworksLoamyRoute: typeof BusinessesTechworksLoamyRouteWithChildren
+  BusinessesTechworksIndexRoute: typeof BusinessesTechworksIndexRoute
 }
 
 const BusinessesTechworksRouteChildren: BusinessesTechworksRouteChildren = {
   BusinessesTechworksLoamyRoute: BusinessesTechworksLoamyRouteWithChildren,
+  BusinessesTechworksIndexRoute: BusinessesTechworksIndexRoute,
 }
 
 const BusinessesTechworksRouteWithChildren =
