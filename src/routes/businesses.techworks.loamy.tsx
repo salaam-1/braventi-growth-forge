@@ -46,7 +46,7 @@ function LoamyLanding() {
           <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
             <div>
               <p className="eyebrow text-gold"><span className="gold-rule" />A Braventi Techworks Product</p>
-              <h1 className="mt-6 text-5xl md:text-6xl font-display leading-[1.05]">
+              <h1 className="mt-6 text-5xl md:text-6xl font-display leading-[1.05] text-white">
                 Nigeria's Agricultural Operating System.
               </h1>
               <p className="mt-6 max-w-xl text-lg text-white/80 leading-relaxed">
