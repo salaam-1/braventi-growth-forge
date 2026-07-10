@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Sprout, TrendingUp, Users, Zap, ShieldCheck, Globe2 } from "lucide-react";
-import loamyDashboard from "@/assets/loamy-dashboard.jpg";
+import loamyDashboard from "@/assets/loamy-dashboard.png.asset.json";
 
 export const Route = createFileRoute("/businesses/techworks/loamy")({
   head: () => ({
@@ -80,7 +80,7 @@ function LoamyLanding() {
             <div className="relative">
               <div className="absolute -inset-6 rounded-sm bg-gold/10 blur-2xl" />
               <img
-                src={loamyDashboard}
+                src={loamyDashboard.url}
                 alt="Loamy dashboard preview"
                 className="relative w-full rounded-sm shadow-[0_40px_100px_-30px_rgba(0,0,0,0.6)]"
               />
