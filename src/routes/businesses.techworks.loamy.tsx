@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Sprout, TrendingUp, Users, Zap, ShieldCheck, Globe2 } from "lucide-react";
-import loamyDashboard from "@/assets/loamy-dashboard.jpg";
+import loamyDashboard from "@/assets/loamy-dashboard.png.asset.json";
 
 export const Route = createFileRoute("/businesses/techworks/loamy")({
   head: () => ({
