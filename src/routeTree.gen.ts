@@ -21,9 +21,6 @@ import { Route as BusinessesStructuresRouteImport } from './routes/businesses.st
 import { Route as BusinessesEximRouteImport } from './routes/businesses.exim'
 import { Route as BusinessesEnergiesRouteImport } from './routes/businesses.energies'
 import { Route as BusinessesTechworksIndexRouteImport } from './routes/businesses.techworks.index'
-import { Route as BusinessesTechworksLoamyRouteImport } from './routes/businesses.techworks.loamy'
-import { Route as BusinessesTechworksLoamyDashboardRouteImport } from './routes/businesses.techworks.loamy.dashboard'
-import { Route as BusinessesTechworksLoamyAuthRouteImport } from './routes/businesses.techworks.loamy.auth'
 
 const StoryRoute = StoryRouteImport.update({
   id: '/story',
@@ -86,24 +83,6 @@ const BusinessesTechworksIndexRoute =
     path: '/',
     getParentRoute: () => BusinessesTechworksRoute,
   } as any)
-const BusinessesTechworksLoamyRoute =
-  BusinessesTechworksLoamyRouteImport.update({
-    id: '/loamy',
-    path: '/loamy',
-    getParentRoute: () => BusinessesTechworksRoute,
-  } as any)
-const BusinessesTechworksLoamyDashboardRoute =
-  BusinessesTechworksLoamyDashboardRouteImport.update({
-    id: '/dashboard',
-    path: '/dashboard',
-    getParentRoute: () => BusinessesTechworksLoamyRoute,
-  } as any)
-const BusinessesTechworksLoamyAuthRoute =
-  BusinessesTechworksLoamyAuthRouteImport.update({
-    id: '/auth',
-    path: '/auth',
-    getParentRoute: () => BusinessesTechworksLoamyRoute,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -117,10 +96,7 @@ export interface FileRoutesByFullPath {
   '/businesses/structures': typeof BusinessesStructuresRoute
   '/businesses/techworks': typeof BusinessesTechworksRouteWithChildren
   '/businesses/': typeof BusinessesIndexRoute
-  '/businesses/techworks/loamy': typeof BusinessesTechworksLoamyRouteWithChildren
   '/businesses/techworks/': typeof BusinessesTechworksIndexRoute
-  '/businesses/techworks/loamy/auth': typeof BusinessesTechworksLoamyAuthRoute
-  '/businesses/techworks/loamy/dashboard': typeof BusinessesTechworksLoamyDashboardRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -133,10 +109,7 @@ export interface FileRoutesByTo {
   '/businesses/exim': typeof BusinessesEximRoute
   '/businesses/structures': typeof BusinessesStructuresRoute
   '/businesses': typeof BusinessesIndexRoute
-  '/businesses/techworks/loamy': typeof BusinessesTechworksLoamyRouteWithChildren
   '/businesses/techworks': typeof BusinessesTechworksIndexRoute
-  '/businesses/techworks/loamy/auth': typeof BusinessesTechworksLoamyAuthRoute
-  '/businesses/techworks/loamy/dashboard': typeof BusinessesTechworksLoamyDashboardRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -151,10 +124,7 @@ export interface FileRoutesById {
   '/businesses/structures': typeof BusinessesStructuresRoute
   '/businesses/techworks': typeof BusinessesTechworksRouteWithChildren
   '/businesses/': typeof BusinessesIndexRoute
-  '/businesses/techworks/loamy': typeof BusinessesTechworksLoamyRouteWithChildren
   '/businesses/techworks/': typeof BusinessesTechworksIndexRoute
-  '/businesses/techworks/loamy/auth': typeof BusinessesTechworksLoamyAuthRoute
-  '/businesses/techworks/loamy/dashboard': typeof BusinessesTechworksLoamyDashboardRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -170,10 +140,7 @@ export interface FileRouteTypes {
     | '/businesses/structures'
     | '/businesses/techworks'
     | '/businesses/'
-    | '/businesses/techworks/loamy'
     | '/businesses/techworks/'
-    | '/businesses/techworks/loamy/auth'
-    | '/businesses/techworks/loamy/dashboard'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -186,10 +153,7 @@ export interface FileRouteTypes {
     | '/businesses/exim'
     | '/businesses/structures'
     | '/businesses'
-    | '/businesses/techworks/loamy'
     | '/businesses/techworks'
-    | '/businesses/techworks/loamy/auth'
-    | '/businesses/techworks/loamy/dashboard'
   id:
     | '__root__'
     | '/'
@@ -203,10 +167,7 @@ export interface FileRouteTypes {
     | '/businesses/structures'
     | '/businesses/techworks'
     | '/businesses/'
-    | '/businesses/techworks/loamy'
     | '/businesses/techworks/'
-    | '/businesses/techworks/loamy/auth'
-    | '/businesses/techworks/loamy/dashboard'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -309,54 +270,14 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BusinessesTechworksIndexRouteImport
       parentRoute: typeof BusinessesTechworksRoute
     }
-    '/businesses/techworks/loamy': {
-      id: '/businesses/techworks/loamy'
-      path: '/loamy'
-      fullPath: '/businesses/techworks/loamy'
-      preLoaderRoute: typeof BusinessesTechworksLoamyRouteImport
-      parentRoute: typeof BusinessesTechworksRoute
-    }
-    '/businesses/techworks/loamy/dashboard': {
-      id: '/businesses/techworks/loamy/dashboard'
-      path: '/dashboard'
-      fullPath: '/businesses/techworks/loamy/dashboard'
-      preLoaderRoute: typeof BusinessesTechworksLoamyDashboardRouteImport
-      parentRoute: typeof BusinessesTechworksLoamyRoute
-    }
-    '/businesses/techworks/loamy/auth': {
-      id: '/businesses/techworks/loamy/auth'
-      path: '/auth'
-      fullPath: '/businesses/techworks/loamy/auth'
-      preLoaderRoute: typeof BusinessesTechworksLoamyAuthRouteImport
-      parentRoute: typeof BusinessesTechworksLoamyRoute
-    }
   }
 }
-
-interface BusinessesTechworksLoamyRouteChildren {
-  BusinessesTechworksLoamyAuthRoute: typeof BusinessesTechworksLoamyAuthRoute
-  BusinessesTechworksLoamyDashboardRoute: typeof BusinessesTechworksLoamyDashboardRoute
-}
-
-const BusinessesTechworksLoamyRouteChildren: BusinessesTechworksLoamyRouteChildren =
-  {
-    BusinessesTechworksLoamyAuthRoute: BusinessesTechworksLoamyAuthRoute,
-    BusinessesTechworksLoamyDashboardRoute:
-      BusinessesTechworksLoamyDashboardRoute,
-  }
-
-const BusinessesTechworksLoamyRouteWithChildren =
-  BusinessesTechworksLoamyRoute._addFileChildren(
-    BusinessesTechworksLoamyRouteChildren,
-  )
 
 interface BusinessesTechworksRouteChildren {
-  BusinessesTechworksLoamyRoute: typeof BusinessesTechworksLoamyRouteWithChildren
   BusinessesTechworksIndexRoute: typeof BusinessesTechworksIndexRoute
 }
 
 const BusinessesTechworksRouteChildren: BusinessesTechworksRouteChildren = {
-  BusinessesTechworksLoamyRoute: BusinessesTechworksLoamyRouteWithChildren,
   BusinessesTechworksIndexRoute: BusinessesTechworksIndexRoute,
 }
 
@@ -379,3 +300,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

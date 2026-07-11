@@ -86,13 +86,15 @@ function TechworksPage() {
                   platform — connecting the entire value chain.
                 </p>
                 <div className="mt-8">
-                  <Link
-                    to="/businesses/techworks/loamy"
+                  <a
+                    href="https://loamy-portal.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-sm bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground hover:bg-emerald-deep transition"
                   >
                     Visit Official Loamy Website
                     <ArrowUpRight size={16} />
-                  </Link>
+                  </a>
                 </div>
               </div>
               <div className="relative bg-bone p-8 md:p-12 flex items-center justify-center">
