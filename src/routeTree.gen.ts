@@ -9,8 +9,10 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as StoryRouteImport } from './routes/story'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as AboutRouteImport } from './routes/about'
@@ -22,6 +24,11 @@ import { Route as BusinessesEximRouteImport } from './routes/businesses.exim'
 import { Route as BusinessesEnergiesRouteImport } from './routes/businesses.energies'
 import { Route as BusinessesTechworksIndexRouteImport } from './routes/businesses.techworks.index'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StoryRoute = StoryRouteImport.update({
   id: '/story',
   path: '/story',
@@ -30,6 +37,11 @@ const StoryRoute = StoryRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -89,8 +101,10 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/story': typeof StoryRoute
+  '/terms': typeof TermsRoute
   '/businesses/energies': typeof BusinessesEnergiesRoute
   '/businesses/exim': typeof BusinessesEximRoute
   '/businesses/structures': typeof BusinessesStructuresRoute
@@ -103,8 +117,10 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/story': typeof StoryRoute
+  '/terms': typeof TermsRoute
   '/businesses/energies': typeof BusinessesEnergiesRoute
   '/businesses/exim': typeof BusinessesEximRoute
   '/businesses/structures': typeof BusinessesStructuresRoute
@@ -117,8 +133,10 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/story': typeof StoryRoute
+  '/terms': typeof TermsRoute
   '/businesses/energies': typeof BusinessesEnergiesRoute
   '/businesses/exim': typeof BusinessesEximRoute
   '/businesses/structures': typeof BusinessesStructuresRoute
@@ -133,8 +151,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/careers'
     | '/contact'
+    | '/privacy'
     | '/sitemap.xml'
     | '/story'
+    | '/terms'
     | '/businesses/energies'
     | '/businesses/exim'
     | '/businesses/structures'
@@ -147,8 +167,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/careers'
     | '/contact'
+    | '/privacy'
     | '/sitemap.xml'
     | '/story'
+    | '/terms'
     | '/businesses/energies'
     | '/businesses/exim'
     | '/businesses/structures'
@@ -160,8 +182,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/careers'
     | '/contact'
+    | '/privacy'
     | '/sitemap.xml'
     | '/story'
+    | '/terms'
     | '/businesses/energies'
     | '/businesses/exim'
     | '/businesses/structures'
@@ -175,8 +199,10 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
+  PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StoryRoute: typeof StoryRoute
+  TermsRoute: typeof TermsRoute
   BusinessesEnergiesRoute: typeof BusinessesEnergiesRoute
   BusinessesEximRoute: typeof BusinessesEximRoute
   BusinessesStructuresRoute: typeof BusinessesStructuresRoute
@@ -186,6 +212,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/story': {
       id: '/story'
       path: '/story'
@@ -198,6 +231,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -289,8 +329,10 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
+  PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StoryRoute: StoryRoute,
+  TermsRoute: TermsRoute,
   BusinessesEnergiesRoute: BusinessesEnergiesRoute,
   BusinessesEximRoute: BusinessesEximRoute,
   BusinessesStructuresRoute: BusinessesStructuresRoute,
