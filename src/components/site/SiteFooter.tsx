@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Linkedin, Twitter, Mail } from "lucide-react";
+import { Facebook, Twitter, Mail } from "lucide-react";
 import logoAsset from "@/assets/brave_logo_cropped.png";
 
 export function SiteFooter() {
@@ -92,11 +92,13 @@ export function SiteFooter() {
             </ul>
             <div className="mt-6 flex items-center gap-3">
               <a
-                href="#"
-                aria-label="LinkedIn"
+                href="https://www.facebook.com/share/1CmsJs2rJv/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white/80 hover:border-gold hover:text-gold transition"
               >
-                <Linkedin size={15} />
+                <Facebook size={15} />
               </a>
               <a
                 href="https://x.com/Braventi_"

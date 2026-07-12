@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, SectionHeader } from "@/components/site/PageHero";
 import { useState } from "react";
-import { Mail, Phone, MapPin, Linkedin, Twitter, Check } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Twitter, Check, Loader2 } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -21,8 +21,41 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
+// Free form-to-email relay (formsubmit.co) — delivers submissions to the
+// address in the URL. The first-ever submission triggers a one-time
+// activation email to that inbox; deliveries start after it's confirmed.
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/braventitechnologies@gmail.com";
+
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(e.currentTarget).entries());
+    setSending(true);
+    setError(null);
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          ...data,
+          _subject: `Website contact from ${data.name}${data.subject ? ` — ${data.subject}` : ""}`,
+          _template: "table",
+        }),
+      });
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      setSent(true);
+    } catch {
+      setError(
+        "Your message could not be sent right now. Please email us directly at braventitechnologies@gmail.com.",
+      );
+    } finally {
+      setSending(false);
+    }
+  }
 
   return (
     <>
@@ -71,10 +104,22 @@ function ContactPage() {
             </ul>
 
             <div className="flex items-center gap-3 pt-4">
-              <a href="#" aria-label="LinkedIn" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground hover:border-primary hover:text-primary transition">
-                <Linkedin size={15} />
+              <a
+                href="https://www.facebook.com/share/1CmsJs2rJv/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground hover:border-primary hover:text-primary transition"
+              >
+                <Facebook size={15} />
               </a>
-              <a href="#" aria-label="Twitter" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground hover:border-primary hover:text-primary transition">
+              <a
+                href="https://x.com/Braventi_"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X (Twitter)"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground hover:border-primary hover:text-primary transition"
+              >
                 <Twitter size={15} />
               </a>
             </div>
@@ -91,10 +136,7 @@ function ContactPage() {
 
           <div className="lg:col-span-7">
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
+              onSubmit={handleSubmit}
               className="rounded-sm border border-border bg-white p-8 md:p-10 space-y-6"
             >
               {sent ? (
@@ -127,11 +169,14 @@ function ContactPage() {
                       className="w-full rounded-sm border border-input bg-background px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                     />
                   </div>
+                  {error && <p className="text-sm text-destructive">{error}</p>}
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center rounded-sm bg-primary px-8 py-3.5 text-sm font-medium text-primary-foreground hover:bg-emerald-deep transition"
+                    disabled={sending}
+                    className="inline-flex items-center justify-center gap-2 rounded-sm bg-primary px-8 py-3.5 text-sm font-medium text-primary-foreground hover:bg-emerald-deep transition disabled:opacity-60"
                   >
-                    Send Message
+                    {sending && <Loader2 size={15} className="animate-spin" />}
+                    {sending ? "Sending…" : "Send Message"}
                   </button>
                 </>
               )}

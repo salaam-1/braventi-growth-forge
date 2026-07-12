@@ -110,6 +110,7 @@ const leaders: Leader[] = [
     photo: leaderAbduljaleel,
     quote:
       "I don't pick industries. I pick broken systems, then I build companies to fix them.",
+    linkedin: "https://ng.linkedin.com/in/abduljaleel-sulaiman-57baa31a6",
     twitter: "https://x.com/2_blacktiger?s=11",
   },
   {
