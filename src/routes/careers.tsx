@@ -22,9 +22,49 @@ export const Route = createFileRoute("/careers")({
   component: CareersPage,
 });
 
+// Same free form-to-email relay as the contact page. The CV is sent as a
+// multipart upload so it arrives as an email attachment (relay limit ~5MB).
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/braventitechnologies@gmail.com";
+const MAX_CV_BYTES = 5 * 1024 * 1024;
+
 function CareersPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    const cv = data.get("attachment");
+    if (cv instanceof File && cv.size > MAX_CV_BYTES) {
+      setError("Your CV is larger than 5MB. Please attach a smaller file.");
+      return;
+    }
+
+    data.append("_subject", `CV submission from ${data.get("name")}`);
+    data.append("_template", "table");
+
+    setSending(true);
+    setError(null);
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      });
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      setSubmitted(true);
+    } catch {
+      setError(
+        "Your application could not be sent right now. Please email your CV directly to braventitechnologies@gmail.com.",
+      );
+    } finally {
+      setSending(false);
+    }
+  }
 
   return (
     <>
@@ -48,10 +88,7 @@ function CareersPage() {
 
           <div className="lg:col-span-7">
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSubmitted(true);
-              }}
+              onSubmit={handleSubmit}
               className="rounded-sm border border-border bg-white p-8 md:p-10 space-y-6"
             >
               {submitted ? (
@@ -95,17 +132,20 @@ function CareersPage() {
                       <span className="text-xs uppercase tracking-widest text-primary">Browse</span>
                       <input
                         type="file"
+                        name="attachment"
                         className="hidden"
                         accept=".pdf,.doc,.docx"
                         onChange={(e) => setFileName(e.target.files?.[0]?.name ?? null)}
                       />
                     </label>
                   </div>
+                  {error && <p className="text-sm text-destructive">{error}</p>}
                   <button
                     type="submit"
-                    className="w-full sm:w-auto inline-flex items-center justify-center rounded-sm bg-primary px-8 py-3.5 text-sm font-medium text-primary-foreground hover:bg-emerald-deep transition"
+                    disabled={sending}
+                    className="w-full sm:w-auto inline-flex items-center justify-center rounded-sm bg-primary px-8 py-3.5 text-sm font-medium text-primary-foreground hover:bg-emerald-deep transition disabled:opacity-60"
                   >
-                    Submit Application
+                    {sending ? "Sending…" : "Submit Application"}
                   </button>
                 </>
               )}
