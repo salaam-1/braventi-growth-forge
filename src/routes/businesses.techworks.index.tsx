@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, SectionHeader } from "@/components/site/PageHero";
 import businessTech from "@/assets/business-tech.jpg";
-import loamyDashboard from "@/assets/loamy-dashboard.jpg";
+import loamyDashboard from "@/assets/loamy-homepage.jpg";
 import { ArrowLeft, ArrowUpRight, Code2, Brain, Building, Cloud, Rocket, Lightbulb, FlaskConical } from "lucide-react";
 
 export const Route = createFileRoute("/businesses/techworks/")({
