@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://www.braventiholdings.com.ng/sitemap.xml

@@ -77,6 +77,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      {
+        name: "google-site-verification",
+        content: "eBF6ooT6OkAgc0TW7ep1iE-e837G0la2G_GjGnM4WYE",
+      },
       { title: "Braventi Holdings | Nigerian Diversified Holding Company" },
       {
         name: "description",
