@@ -87,7 +87,7 @@ function TechworksPage() {
                 </p>
                 <div className="mt-8">
                   <a
-                    href="https://loamy-portal.vercel.app"
+                    href="https://loamy.braventiholdings.com.ng"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-sm bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground hover:bg-emerald-deep transition"
