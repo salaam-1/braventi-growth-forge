@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Linkedin, Twitter, Mail } from "lucide-react";
-import logoAsset from "@/assets/brave_logo_cropped.png.asset.json";
+import logoAsset from "@/assets/brave_logo_cropped.png";
 
 export function SiteFooter() {
   return (
@@ -10,7 +10,7 @@ export function SiteFooter() {
           <div>
             <div className="flex items-center gap-3">
               <img
-                src={logoAsset.url}
+                src={logoAsset}
                 alt="Braventi Holdings"
                 className="h-11 w-auto"
               />

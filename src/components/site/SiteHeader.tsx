@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logoAsset from "@/assets/brave_logo_cropped.png.asset.json";
+import logoAsset from "@/assets/brave_logo_cropped.png";
 
 type NavItem = {
   to: string;
@@ -75,7 +75,7 @@ export function SiteHeader() {
       <div className="container-x flex h-20 items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
           <img
-            src={logoAsset.url}
+            src={logoAsset}
             alt="Braventi Holdings"
             className="h-12 w-auto md:h-14"
           />

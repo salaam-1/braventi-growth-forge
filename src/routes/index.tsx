@@ -5,10 +5,10 @@ import businessTech from "@/assets/business-tech.jpg";
 import businessStructures from "@/assets/business-structures.jpg";
 import businessEnergy from "@/assets/business-energy.jpg";
 import businessMinerals from "@/assets/business-minerals.jpg";
-import leaderAbduljaleel from "@/assets/leader-abduljaleel.jpg.asset.json";
-import leaderUsmanYakubu from "@/assets/leader-usman-yakubu.jpg.asset.json";
-import leaderFahad from "@/assets/leader-fahad.jpg.asset.json";
-import leaderUsmanMusa from "@/assets/leader-usman-musa.jpg.asset.json";
+import leaderAbduljaleel from "@/assets/leader-abduljaleel.jpg";
+import leaderUsmanYakubu from "@/assets/leader-usman-yakubu.jpg";
+import leaderFahad from "@/assets/leader-fahad.jpg";
+import leaderUsmanMusa from "@/assets/leader-usman-musa.jpg";
 import {
   ArrowUpRight,
   Ship,
@@ -107,43 +107,39 @@ const leaders: Leader[] = [
     name: "Sulaiman Abduljaleel Mahmud",
     role: "Chairman & CEO",
     org: "Braventi Holdings",
-    photo: leaderAbduljaleel.url,
+    photo: leaderAbduljaleel,
     quote:
       "I don't pick industries. I pick broken systems, then I build companies to fix them.",
-    linkedin: "#",
-    twitter: "#",
+    twitter: "https://x.com/2_blacktiger?s=11",
   },
   {
     name: "Usman Yakubu",
     role: "Head of Product & Technology",
     org: "Braventi Holdings",
-    photo: leaderUsmanYakubu.url,
+    photo: leaderUsmanYakubu,
     quote:
       "I don't chase every idea. I chase the ones that survive contact with reality.",
-    linkedin: "#",
-    twitter: "#",
+    twitter: "https://x.com/Novjid_Usman",
   },
   {
     name: "Fahad Zakariyya Ishaq",
     role: "Head of Operations",
     org: "Braventi Holdings",
-    photo: leaderFahad.url,
+    photo: leaderFahad,
     photoClassName: "scale-110 origin-top",
     quote:
       "History remembers those who transformed obstacles into opportunities for a nation, not just themselves.",
-    linkedin: "#",
-    twitter: "#",
+    twitter: "https://x.com/FahadZakar2548",
   },
   {
     name: "Usman Musa",
     role: "Research and Development",
     org: "Braventi Holdings",
-    photo: leaderUsmanMusa.url,
+    photo: leaderUsmanMusa,
     photoClassName: "scale-110 origin-top",
     quote:
       "Every community deserves opportunities to grow. I am committed to connecting people with the resources, support, and partnerships that drive sustainable development.",
-    linkedin: "#",
-    twitter: "#",
+    twitter: "https://x.com/MusaUsman637655",
   },
 ];
 
