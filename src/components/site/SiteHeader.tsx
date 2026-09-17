@@ -94,7 +94,8 @@ export function SiteHeader() {
             renderNavLink(
               n,
               undefined,
-              "text-sm font-medium text-foreground/80 transition-colors hover:text-primary",
+              // Gold underline sweeps out from the left on hover.
+              "relative text-sm font-medium text-foreground/80 transition-colors hover:text-primary after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-gold after:transition-transform after:duration-300 hover:after:scale-x-100",
             ),
           )}
         </nav>

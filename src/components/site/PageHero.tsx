@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useInView } from "@/hooks/use-in-view";
 
 export function PageHero({
   eyebrow,
@@ -20,7 +21,7 @@ export function PageHero({
           <img
             src={image}
             alt=""
-            className="h-full w-full object-cover opacity-45"
+            className="hero-pan h-full w-full object-cover opacity-45"
             loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-charcoal/70 to-charcoal" />
@@ -57,10 +58,18 @@ export function SectionHeader({
   subtitle?: string;
   align?: "left" | "center";
 }) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+
   return (
-    <div className={align === "center" ? "text-center mx-auto max-w-3xl" : "max-w-3xl"}>
+    <div
+      ref={ref}
+      className={align === "center" ? "text-center mx-auto max-w-3xl" : "max-w-3xl"}
+    >
       {eyebrow && (
-        <p className="eyebrow"><span className="gold-rule" />{eyebrow}</p>
+        <p className="eyebrow">
+          <span className={`gold-rule ${inView ? "rule-drawn" : "rule-collapsed"}`} />
+          {eyebrow}
+        </p>
       )}
       <h2 className="mt-4 text-3xl md:text-5xl leading-tight font-normal">
         {title}

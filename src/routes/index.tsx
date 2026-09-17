@@ -163,25 +163,34 @@ function Home() {
         <img
           src={heroPort}
           alt="Global port operations"
-          className="absolute inset-0 h-full w-full object-cover opacity-55"
+          className="hero-pan absolute inset-0 h-full w-full object-cover opacity-55"
           width={1920}
           height={1080}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/60 to-charcoal/95" />
         <div className="container-x relative py-32 md:py-40">
-          <p className="text-[11px] uppercase tracking-[0.32em] text-gold font-semibold">
-            <span className="inline-block w-10 h-px bg-gold align-middle mr-3" />
+          <p className="hero-rise text-[11px] uppercase tracking-[0.32em] text-gold font-semibold">
+            <span className="rule-drawn inline-block w-10 h-px bg-gold align-middle mr-3" />
             Braventi Holdings
           </p>
-          <h1 className="mt-6 max-w-5xl text-5xl md:text-7xl leading-[1.02] text-white font-normal">
+          <h1
+            className="hero-rise mt-6 max-w-5xl text-5xl md:text-7xl leading-[1.02] text-white font-normal"
+            style={{ animationDelay: "120ms" }}
+          >
             Building Businesses<br />That Matter.
           </h1>
-          <p className="mt-8 max-w-2xl text-lg md:text-xl text-white/80 leading-relaxed">
+          <p
+            className="hero-rise mt-8 max-w-2xl text-lg md:text-xl text-white/80 leading-relaxed"
+            style={{ animationDelay: "240ms" }}
+          >
             Braventi Holdings is a diversified investment and operating company
             building enduring businesses across trade, technology, infrastructure
             and sustainable industries.
           </p>
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div
+            className="hero-rise mt-10 flex flex-wrap items-center gap-4"
+            style={{ animationDelay: "360ms" }}
+          >
             <Link
               to="/businesses"
               className="group inline-flex items-center gap-2 rounded-sm bg-gold px-7 py-3.5 text-sm font-medium tracking-wide text-charcoal transition hover:bg-gold-soft"
@@ -320,9 +329,11 @@ function Home() {
                     src={b.img}
                     alt={b.name}
                     loading="lazy"
-                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.07]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-transparent" />
+                  {/* Hovering lifts the veil: the photograph reads clearer. */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/45 to-transparent transition-opacity duration-700 group-hover:opacity-70" />
                 </div>
                 <div className="p-8">
                   <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-gold">

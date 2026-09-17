@@ -126,3 +126,91 @@
   vertical-align: middle;
   margin-right: 0.75rem;
 }
+
+@layer base {
+  /* Keyboard users get a clear, brand-coloured focus ring everywhere. */
+  :focus-visible {
+    outline: 2px solid var(--brand-gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  a,
+  button,
+  [role="button"] {
+    cursor: pointer;
+  }
+}
+
+/* The hero plays once on load: rule, headline, copy, buttons. */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* A slow drift across the hero photograph — long enough to read as stillness. */
+@keyframes slow-pan {
+  from {
+    transform: scale(1.06) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.14) translate3d(-1.2%, -1.6%, 0);
+  }
+}
+
+/* The gold rule draws itself in as a heading arrives. */
+@keyframes rule-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@utility hero-rise {
+  opacity: 0;
+  animation: rise-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@utility hero-pan {
+  animation: slow-pan 32s ease-out forwards;
+  transform-origin: 60% 40%;
+}
+
+/* Section rules start collapsed and draw once their heading is in view. */
+@utility rule-collapsed {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+@utility rule-drawn {
+  animation: rule-draw 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform-origin: left center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  /* Anything that animates in must still end up visible and in place. */
+  .hero-rise,
+  .rule-collapsed,
+  .rule-drawn {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
