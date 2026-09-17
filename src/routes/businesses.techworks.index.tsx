@@ -100,7 +100,7 @@ function TechworksPage() {
               <div className="relative bg-bone p-8 md:p-12 flex items-center justify-center">
                 <img
                   src={loamyDashboard}
-                  alt="Loamy dashboard"
+                  alt="Loamy platform preview on desktop and mobile"
                   loading="lazy"
                   className="w-full max-w-xl rounded-sm shadow-[0_30px_80px_-30px_rgba(1,77,64,0.35)]"
                 />
