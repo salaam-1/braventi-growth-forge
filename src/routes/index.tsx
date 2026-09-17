@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroPort from "@/assets/hero-port.jpg";
+import logoMark from "@/assets/brave_logo_cropped.png";
 import businessExim from "@/assets/business-exim.jpg";
 import businessTech from "@/assets/business-tech.jpg";
 import businessStructures from "@/assets/business-structures.jpg";
@@ -254,8 +255,14 @@ function Home() {
       </section>
 
       {/* ABOUT */}
-      <section className="py-24 md:py-32">
-        <div className="container-x grid gap-16 lg:grid-cols-12">
+      <section className="relative overflow-hidden py-24 md:py-32">
+        <img
+          src={logoMark}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-24 top-1/2 hidden w-[34rem] -translate-y-1/2 opacity-[0.045] lg:block"
+        />
+        <div className="container-x relative grid gap-16 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <SectionHeader
               eyebrow="Who We Are"
@@ -318,8 +325,9 @@ function Home() {
       </section>
 
       {/* VALUES */}
-      <section className="py-24 md:py-32">
-        <div className="container-x">
+      <section className="relative overflow-hidden border-t border-border py-24 md:py-32">
+        <div className="pattern-weave absolute inset-0" aria-hidden="true" />
+        <div className="container-x relative">
           <SectionHeader
             eyebrow="Core Values"
             title="The principles behind every business we build."
@@ -429,8 +437,12 @@ function Home() {
       </section>
 
       {/* LEADERSHIP */}
-      <section id="leadership" className="py-24 md:py-32 scroll-mt-24">
-        <div className="container-x">
+      <section
+        id="leadership"
+        className="relative overflow-hidden bg-secondary py-24 md:py-32 scroll-mt-24"
+      >
+        <div className="pattern-dots absolute inset-0 opacity-60" aria-hidden="true" />
+        <div className="container-x relative">
           <SectionHeader
             eyebrow="Leadership"
             title="The people building Braventi Holdings."
@@ -513,20 +525,26 @@ function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 md:py-32">
+      <section className="pb-24 md:pb-32">
         <div className="container-x">
-          <div className="rounded-sm border border-border bg-bone p-12 md:p-20 text-center">
-            <p className="eyebrow"><span className="gold-rule" />Partner with us</p>
-            <h2 className="mt-4 text-3xl md:text-5xl max-w-3xl mx-auto leading-tight">
+          <div className="relative overflow-hidden rounded-sm bg-primary p-12 md:p-20 text-center">
+            <div className="pattern-dots absolute inset-0 opacity-30" aria-hidden="true" />
+            <div className="relative">
+            <p className="text-[11px] uppercase tracking-[0.28em] text-gold font-semibold">
+              <span className="inline-block w-10 h-px bg-gold align-middle mr-3" />
+              Partner with us
+            </p>
+            <h2 className="mt-4 text-3xl md:text-5xl max-w-3xl mx-auto leading-tight text-white font-display">
               Let's build the next generation of enduring businesses — together.
             </h2>
             <div className="mt-10">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-sm bg-primary px-8 py-4 text-sm font-medium tracking-wide text-primary-foreground hover:bg-emerald-deep transition"
+                className="inline-flex items-center gap-2 rounded-sm bg-gold px-8 py-4 text-sm font-medium tracking-wide text-charcoal transition hover:bg-gold-soft"
               >
                 Start a conversation <ArrowUpRight size={16} />
               </Link>
+            </div>
             </div>
           </div>
         </div>

@@ -88,6 +88,11 @@
   }
   body {
     background-color: var(--color-background);
+    /* A faint field so plain areas read as paper, not emptiness. */
+    background-image:
+      linear-gradient(to right, rgba(1, 77, 64, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(1, 77, 64, 0.035) 1px, transparent 1px);
+    background-size: 72px 72px;
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";
@@ -192,6 +197,32 @@
 @utility rule-drawn {
   animation: rule-draw 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   transform-origin: left center;
+}
+
+/* Quiet surface textures, so pale sections read as paper rather than gaps. */
+@utility pattern-grid {
+  background-image:
+    linear-gradient(to right, rgba(1, 77, 64, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(1, 77, 64, 0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+@utility pattern-weave {
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(1, 77, 64, 0.05) 0px,
+    rgba(1, 77, 64, 0.05) 1px,
+    transparent 1px,
+    transparent 14px
+  );
+}
+
+@utility pattern-dots {
+  background-image: radial-gradient(
+    rgba(200, 160, 69, 0.28) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
 }
 
 /* Cards and blocks lift into place as they arrive. */
