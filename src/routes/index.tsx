@@ -9,6 +9,7 @@ import leaderAbduljaleel from "@/assets/leader-abduljaleel.jpg";
 import leaderUsmanYakubu from "@/assets/leader-usman-yakubu.jpg";
 import leaderFahad from "@/assets/leader-fahad.jpg";
 import leaderUsmanMusa from "@/assets/leader-usman-musa.jpg";
+import leaderSelimat from "@/assets/leader-selimat.jpg";
 import {
   ArrowUpRight,
   Ship,
@@ -115,7 +116,7 @@ const leaders: Leader[] = [
   },
   {
     name: "Usman Yakubu",
-    role: "Head of Product & Technology",
+    role: "Chief Strategist & Head of Technology",
     org: "Braventi Holdings",
     photo: leaderUsmanYakubu,
     quote:
@@ -133,8 +134,18 @@ const leaders: Leader[] = [
     twitter: "https://x.com/FahadZakar2548",
   },
   {
+    name: "Selimat Akinwale",
+    role: "Head of Product",
+    org: "Braventi Holdings",
+    photo: leaderSelimat,
+    quote:
+      "We don't start with what's possible. We start with what people have learned to put up with and ask why it's still true.",
+    linkedin: "https://www.linkedin.com/in/akinwale-selimat",
+    twitter: "https://x.com/OlayemiAAA",
+  },
+  {
     name: "Usman Musa",
-    role: "Research and Development",
+    role: "Head of Growth Partners",
     org: "Braventi Holdings",
     photo: leaderUsmanMusa,
     photoClassName: "scale-110 origin-top",
@@ -377,7 +388,12 @@ function Home() {
             {leaders.map((p, i) => (
               <div
                 key={p.name}
-                className="group rounded-xl border border-border bg-white overflow-hidden shadow-[0_10px_30px_-12px_rgba(15,23,42,0.15)] hover:border-primary/40 hover:shadow-[0_25px_60px_-30px_rgba(1,77,64,0.35)] transition"
+                className={`group rounded-xl border border-border bg-white overflow-hidden shadow-[0_10px_30px_-12px_rgba(15,23,42,0.15)] hover:border-primary/40 hover:shadow-[0_25px_60px_-30px_rgba(1,77,64,0.35)] transition ${
+                  // An odd last card would sit alone on the left; centre it instead.
+                  i === leaders.length - 1 && leaders.length % 2 === 1
+                    ? "md:col-span-2 md:mx-auto md:w-[calc(50%-1rem)]"
+                    : ""
+                }`}
               >
                 <div className="grid grid-cols-5">
                   <div className="col-span-2 relative aspect-square bg-bone overflow-hidden">
