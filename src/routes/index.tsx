@@ -27,6 +27,7 @@ import {
   Quote,
 } from "lucide-react";
 import { SectionHeader } from "@/components/site/PageHero";
+import { CountUp, Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -90,6 +91,20 @@ const businesses = [
     desc: "Sustainable energy solutions for cleaner communities and long-term energy resilience.",
     upcoming: true,
   },
+];
+
+const heroStats = [
+  { value: 5, label: "Subsidiaries in the group" },
+  { value: 4, label: "Operating today" },
+  { value: 1, label: "Unified company" },
+];
+
+const sectors = [
+  "Trade & Export",
+  "Technology",
+  "Real Estate",
+  "Renewable Energy",
+  "Minerals",
 ];
 
 type Leader = {
@@ -205,6 +220,36 @@ function Home() {
               Contact Us
             </Link>
           </div>
+
+          <div
+            className="hero-rise mt-16 grid max-w-3xl grid-cols-3 gap-6 border-t border-white/15 pt-8"
+            style={{ animationDelay: "520ms" }}
+          >
+            {heroStats.map((s) => (
+              <div key={s.label}>
+                <div className="font-display text-4xl md:text-5xl text-gold">
+                  <CountUp to={s.value} />
+                </div>
+                <div className="mt-2 text-xs md:text-sm text-white/70 leading-snug">
+                  {s.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTORS — a slow band of the industries the group operates in */}
+      <section className="border-y border-border bg-bone py-5 overflow-hidden">
+        <div className="sector-drift flex w-max items-center gap-10 whitespace-nowrap">
+          {[...sectors, ...sectors].map((s, i) => (
+            <span key={`${s}-${i}`} className="flex items-center gap-10">
+              <span className="font-display text-lg md:text-2xl text-primary/80">
+                {s}
+              </span>
+              <span className="h-1.5 w-1.5 rounded-full bg-gold" aria-hidden="true" />
+            </span>
+          ))}
         </div>
       </section>
 
@@ -281,19 +326,18 @@ function Home() {
             align="center"
           />
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-            {values.map((v) => (
-              <div
-                key={v.title}
-                className="group rounded-sm border border-border bg-white p-8 transition hover:border-primary/50 hover:shadow-[0_20px_60px_-30px_rgba(1,77,64,0.35)]"
-              >
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-sm bg-primary/5 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
-                  <v.icon size={22} strokeWidth={1.6} />
+            {values.map((v, i) => (
+              <Reveal key={v.title} index={i} className="h-full">
+                <div className="group h-full rounded-sm border border-border bg-white p-8 transition duration-300 hover:-translate-y-1.5 hover:border-primary/50 hover:shadow-[0_20px_60px_-30px_rgba(1,77,64,0.35)]">
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-sm bg-primary/5 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
+                    <v.icon size={22} strokeWidth={1.6} />
+                  </div>
+                  <h3 className="mt-6 text-lg">{v.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    {v.desc}
+                  </p>
                 </div>
-                <h3 className="mt-6 text-lg">{v.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                  {v.desc}
-                </p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -318,11 +362,11 @@ function Home() {
           </div>
 
           <div className="mt-16 grid gap-6 md:grid-cols-2">
-            {businesses.map((b) => (
+            {businesses.map((b, i) => (
+              <Reveal key={b.slug} index={i} className="h-full">
               <Link
-                key={b.slug}
                 to={b.slug}
-                className="group relative block overflow-hidden rounded-sm bg-charcoal border border-white/10 hover:border-gold/60 transition"
+                className="group relative block h-full overflow-hidden rounded-sm bg-charcoal border border-white/10 transition duration-300 hover:-translate-y-1.5 hover:border-gold/60"
               >
                 <div className="relative h-80 overflow-hidden">
                   <img
@@ -356,6 +400,7 @@ function Home() {
                   </div>
                 </div>
               </Link>
+              </Reveal>
             ))}
 
             {/* Minerals — locked */}
@@ -397,22 +442,23 @@ function Home() {
 
           <div className="mt-16 grid gap-8 md:grid-cols-2">
             {leaders.map((p, i) => (
-              <div
+              <Reveal
                 key={p.name}
-                className={`group rounded-xl border border-border bg-white overflow-hidden shadow-[0_10px_30px_-12px_rgba(15,23,42,0.15)] hover:border-primary/40 hover:shadow-[0_25px_60px_-30px_rgba(1,77,64,0.35)] transition ${
-                  // An odd last card would sit alone on the left; centre it instead.
+                index={i}
+                className={`${
                   i === leaders.length - 1 && leaders.length % 2 === 1
                     ? "md:col-span-2 md:mx-auto md:w-[calc(50%-1rem)]"
                     : ""
                 }`}
               >
+              <div className="group h-full rounded-xl border border-border bg-white overflow-hidden shadow-[0_10px_30px_-12px_rgba(15,23,42,0.15)] transition duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-[0_25px_60px_-30px_rgba(1,77,64,0.35)]">
                 <div className="grid grid-cols-5">
                   <div className="col-span-2 relative aspect-square bg-bone overflow-hidden">
                     <img
                       src={p.photo}
                       alt={p.name}
                       loading="lazy"
-                      className={`h-full w-full object-cover object-top ${p.photoClassName ?? ""}`}
+                      className={`h-full w-full object-cover object-top transition-transform duration-[900ms] ease-out group-hover:scale-105 ${p.photoClassName ?? ""}`}
                     />
                   </div>
                   <div className="col-span-3 p-8 flex flex-col">
@@ -460,6 +506,7 @@ function Home() {
                   </div>
                 </div>
               </div>
+              </Reveal>
             ))}
           </div>
         </div>
