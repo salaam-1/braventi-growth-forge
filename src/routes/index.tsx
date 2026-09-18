@@ -255,7 +255,7 @@ function Home() {
       </section>
 
       {/* ABOUT */}
-      <section className="relative overflow-hidden py-24 md:py-32">
+      <section className="relative overflow-hidden py-20 md:py-28">
         <img
           src={logoMark}
           alt=""
@@ -263,13 +263,38 @@ function Home() {
           className="pointer-events-none absolute -right-24 top-1/2 hidden w-[34rem] -translate-y-1/2 opacity-[0.045] lg:block"
         />
         <div className="container-x relative grid gap-16 lg:grid-cols-12">
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-6">
             <SectionHeader
               eyebrow="Who We Are"
               title="A diversified group building for the long term."
             />
           </div>
-          <div className="lg:col-span-7 space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
+
+          {/* Two of the group's worlds — trade and the built environment. */}
+          <Reveal className="lg:col-span-6 lg:row-span-2">
+            <div className="relative">
+              <img
+                src={businessExim}
+                alt="Cargo moving through port operations"
+                loading="lazy"
+                decoding="async"
+                className="aspect-[4/3] w-full rounded-sm object-cover shadow-[0_30px_80px_-40px_rgba(1,77,64,0.55)]"
+              />
+              <img
+                src={businessStructures}
+                alt="A Braventi Structures development"
+                loading="lazy"
+                decoding="async"
+                className="absolute -bottom-10 -left-6 hidden w-2/5 rounded-sm border-4 border-background object-cover shadow-[0_25px_60px_-30px_rgba(0,0,0,0.45)] sm:block"
+              />
+              <span
+                aria-hidden="true"
+                className="absolute -right-4 -top-4 h-24 w-24 border-t-2 border-r-2 border-gold"
+              />
+            </div>
+          </Reveal>
+
+          <div className="lg:col-span-6 space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
             <p>
               Braventi Holdings is a diversified investment and operating
               company focused on building businesses that solve meaningful
@@ -299,7 +324,7 @@ function Home() {
       </section>
 
       {/* VISION / MISSION */}
-      <section className="bg-bone py-24 md:py-32">
+      <section className="bg-bone py-20 md:py-28">
         <div className="container-x grid gap-10 md:grid-cols-2">
           <div className="bg-white p-10 md:p-14 rounded-sm border border-border">
             <p className="eyebrow"><span className="gold-rule" />Vision</p>
@@ -325,7 +350,7 @@ function Home() {
       </section>
 
       {/* VALUES */}
-      <section className="relative overflow-hidden border-t border-border py-24 md:py-32">
+      <section className="relative overflow-hidden border-t border-border py-20 md:py-28">
         <div className="pattern-weave absolute inset-0" aria-hidden="true" />
         <div className="container-x relative">
           <SectionHeader
@@ -351,8 +376,30 @@ function Home() {
         </div>
       </section>
 
+      {/* A photographic pause between the group's principles and its companies */}
+      <section
+        className="relative flex min-h-[22rem] items-center justify-center overflow-hidden bg-cover bg-center md:min-h-[26rem] md:bg-fixed"
+        style={{ backgroundImage: `url(${businessEnergy})` }}
+      >
+        <div className="absolute inset-0 bg-emerald-deep/85" />
+        <div className="container-x relative text-center">
+          <img
+            src={logoMark}
+            alt=""
+            aria-hidden="true"
+            className="mx-auto w-20 opacity-90"
+          />
+          <p className="mt-6 font-display text-3xl md:text-5xl text-white leading-tight">
+            Building businesses that matter.
+          </p>
+          <p className="mt-4 text-sm md:text-base text-white/70">
+            Nigeria — and the markets we trade with.
+          </p>
+        </div>
+      </section>
+
       {/* BUSINESSES */}
-      <section className="bg-charcoal text-white py-24 md:py-32">
+      <section className="bg-charcoal text-white py-20 md:py-28">
         <div className="container-x">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div className="max-w-2xl">
@@ -439,7 +486,7 @@ function Home() {
       {/* LEADERSHIP */}
       <section
         id="leadership"
-        className="relative overflow-hidden bg-secondary py-24 md:py-32 scroll-mt-24"
+        className="relative overflow-hidden bg-secondary py-20 md:py-28 scroll-mt-24"
       >
         <div className="pattern-dots absolute inset-0 opacity-60" aria-hidden="true" />
         <div className="container-x relative">
